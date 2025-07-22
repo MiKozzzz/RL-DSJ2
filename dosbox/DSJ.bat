@@ -1,1 +1,0 @@
-dosbox.exe -conf dsj.conf -noconsole
