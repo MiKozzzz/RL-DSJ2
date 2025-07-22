@@ -44,7 +44,6 @@ The goal is to train an autonomous jumper capable of performing full ski jumps (
 ## 📦 Files & Structure
 
 - `pudv4.py` – custom Gym environment
-- `dosbox` – DSJ game file
 - `cyfry` – file with photos of digits
 - `wiatr` – file with photos of wind
 - `Model_Ropoznawania_kierunku_wiatru.py` – trains a model to recognize wind from game screenshots
