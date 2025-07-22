@@ -43,11 +43,14 @@ The goal is to train an autonomous jumper capable of performing full ski jumps (
 
 ## 📦 Files & Structure
 
-- `wind_env.py` – custom Gym environment
-- `train.py` – training loop with PPO
-- `digit_recognition.py` – CNN model for reading scores from screenshots
-- `utils.py` – image processing and filtering functions
-- `model/` – trained models and digit recognition networks
+- `pudv4.py` – custom Gym environment
+- `dosbox` – DSJ game file
+- `cyfry` – file with photos of digits
+- `wiatr` – file with photos of wind
+- `Model_Ropoznawania_kierunku_wiatru.py` – trains a model to recognize wind from game screenshots
+- `Model_Rozpoznawanie_cyfr.py` – trains a model to recognize digits from game screenshots (used to extract jump length and scores)
+- `best_cyfry.keras` – trained digit recognition model
+- `best_wiatr.keras` – trained wind recognition model
 
 ## 📈 Future Improvements
 
@@ -58,7 +61,18 @@ The goal is to train an autonomous jumper capable of performing full ski jumps (
 
 ## 📸 Screenshots
 
-*(You can include filtered screenshot examples of jump phases here)*
+<img width="472" height="295" alt="obraz" src="https://github.com/user-attachments/assets/2d19fcbb-7c7a-4510-bac3-ef139edf4ac1" />
+
+1. Image of the jumper – cropped screen region containing the ski jumper, used as the main observation input.
+2. Wind direction image – screenshot region showing the current wind direction indicator.
+3. Wind speed image – screenshot region showing the current wind speed value.
+4. Jump length image – cropped area of the screen displaying the distance jumped after landing.
+5. Jump score image – screen region showing the final score received for the jump.
+
+
+<img width="200" height="200" alt="obraz" src="https://github.com/user-attachments/assets/847f60d0-9f5f-4993-b524-793ceaa05b21" />
+
+Filtered screenshot – processed image highlighting only the ski jumper and key elements, removing unnecessary background to improve learning efficiency.
 
 ## 📄 License
 
