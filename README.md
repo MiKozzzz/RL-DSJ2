@@ -69,7 +69,8 @@ The goal is to train an autonomous jumper capable of performing full ski jumps (
 5. Jump score image – screen region showing the final score received for the jump.
 
 
-<img width="200" height="200" alt="obraz" src="https://github.com/user-attachments/assets/847f60d0-9f5f-4993-b524-793ceaa05b21" />
+<img width="200" height="200" alt="obraz" src="https://github.com/user-attachments/assets/847f60d0-9f5f-4993-b524-793ceaa05b21" /> <img width="200" height="200" alt="obraz" src="https://github.com/user-attachments/assets/688bd85a-30f0-4c44-a612-c7ab3fe02a34" />
+
 
 Filtered screenshot – processed image highlighting only the ski jumper and key elements, removing unnecessary background to improve learning efficiency.
 
