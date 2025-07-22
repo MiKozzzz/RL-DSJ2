@@ -26,6 +26,7 @@ The goal is to train an autonomous jumper capable of performing full ski jumps (
 
 ## 🧪 Results
 
+- The agent was trained and evaluated on the **Australia K240** ski jump hill.
 - The best jump achieved: **251 meters**.
 - Average jump length: ~180 meters.
 - The agent mostly lands successfully.
