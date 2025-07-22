@@ -1,0 +1,286 @@
+
+                        D E L U X E   S K I   J U M P
+
+                           (c) Jussi Koskela 2001
+
+
+Obsah
+   1. Nìco o Deluxe Ski Jump
+   2. Systémové poadavky
+   3. Spuštìní hry
+   4. Nìco o skocích na lyích
+   5. Jak skákat, neboli ovládání hry
+   6. Registrace DSJ
+   7. Tvùrci hry a kontakt info
+
+
+Tento software uíváš na svoje vlastní nebezpeèí. Vıvojáø nenese ádnou 
+odpovìdnost za jakékoliv moné škody zpùsobené hrou Deluxe Ski Jump.
+
+_____________________________________________________________________________
+1. Nìco o Deluxe Ski Jump
+
+   Deluxe Ski Jump je simulace skokù na lyích nové generace provedená v
+   3D grafice. Díky pøesnému fyzikálnímu modelu jde o jedno z nejlepších
+   pøiblíení realitì, jaké kdy bylo k vidìní ve sportovních hrách.
+
+   K ovládání je v DSJ vyuívána myš. Ovládání je intuitivní a je velmi
+   dobøe propracováno, co ti dává plnou kontrolu nad tvım, v reálném èase
+   animovanım, závodníkem. Mùeš tedy zcela kontrolovat svùj odraz, co 
+   nejlépe vyuít správného nastavení závodníkova tìla ve vzduchu bìhem
+   letu, vyuívat smìru a rychlosti vìtru a v neposlední øadì i perfektnì
+   pøistát, tak, abys získal co nejvyšší bodové ohodnocení. 
+
+   Hra nabízí 32 mùstkù díky nim se mùeš vít do pocitù závodníka ve
+   skocích na lyích. Mùeš své umìní ukázat jak na malièkém K50, tak 
+   na obrovitém K250. 
+
+   Mùeš také vyzvat k souboji své pøátele a uspoøádat velkı závod ve skocích
+   na lyích, protoe DSJ podporuje hru souèasnì a 16ti hráèù. Kompletní
+   Svìtovı pohár na všech 32 mùstcích v 16ti hráèích je nìco neuvìøitelnì
+   zábavného!
+
+   Bav se i ty!
+
+_____________________________________________________________________________
+2. Systémové poadavky
+
+   Minimální systémové poadavky:
+
+      * Pentium 166 a rychlejší
+      * Dvoutlaèítková myš
+      * VGA kompatibilní grafická karta
+      * 470 kb volné základní pamìti
+      * DOS 4.0 a vyšší
+
+   Doporuèená konfigurace:
+      * viz minimální systémové poadavky plus
+      * Zvuková karta Sound Blaster nebo se Sound Blasterem kompatibilní 
+      * Windows 95 a vyšší
+
+_____________________________________________________________________________
+3. Spuštìní hry
+
+   Chceš-li hrát Deluxe Ski Jump, spus soubor DSJ.exe.
+
+   Proveï nastavení zvukové karty spuštìním souboru SETSOUND.BAT
+   Jazykovou verzi lze nastavit spuštìním souboru SETLANG.BAT
+
+_____________________________________________________________________________
+4. Nìco o skocích na lyích
+
+   Závod ve skocích na lyích sestává ze dvou skokù. Kadı skok je bodovì
+   ohodnocen podle jeho délky a èistoty stylu. Vítìzem soutìe se stává 
+   ten závodník, kterı dosáhne nejvyššího poètu bodù v souètu obou skokù.
+  
+
+   Hodnocení délky skoku:
+
+   Kritickı bod (znaèenı èervenou èárou) má cenu 60ti bodù (120ti bodù v 
+   závodech v letech na lyích). Pokud se závodníkovi podaøí doskoèit za 
+   kritickı bod, získává za kadı metr, o kterı pøekonal tuto hranici, 
+   2,0 body v pøípadì malého mùstku, 1,8 bodu na velkém mùstku a 1,2 bodu
+   v závodech v letech na lyích. Pokud závodník kritického bodu nedosáhne, 
+   pak je stejnı poèet bodù za kadı metr, kterı závodníkovi ke kritické 
+   hranici chybí, odeèten.
+
+
+   Hodnocení stylu skoku:
+
+   Závodníkùv styl hodnotí ve skocích na lyích pìtice rozhodèích. Kadı 
+   rozhodèí mùe dle svého mínìní závodníkovi udìlit 0-20 bodù. Nejvyšší 
+   a nejniší známka z pìti známek udìlenıch rozhodèími jsou škrtnuty a v 
+   celkovém souètu nefigurují. Pro dobrı styl, díky nìmu lze dosáhnout co
+   nejvyššího ohodnocení, jsou charakteristické následující znaky: dobøe 
+   vyváenı odraz, stabilní let bez vıkyvù a co nejjistìjší, dobøe vypadající
+   doskok, nejlépe do telemarku (viz dále).
+
+
+   Celkové bodové ohodnocení za jednotlivı skok:
+
+   Celkové bodové ohodnocení tvoøí souèet bodù získanıch za délku skoku a 
+   za styl. 
+
+
+   Svìtovı pohár:
+
+   Svìtovı pohár je sérií mnoha závodù. Celkové poøadí je urèováno pomocí 
+   souètu bodù, které závodníci obdrí za umístìní v jednotlivıch závodech.
+   V sérii vítìzí ten závodník, kterı získá nejvìtší celkovı poèet bodù za 
+   umístìní bez ohledu na to, kolik bodù získal v jednotlivıch závodech a 
+   kolik závodù vyhrál. V závodech Svìtového poháru získávají závodníci za 
+   umístìní následující poèet bodù:
+
+     1. místo  100 bodù        9. místo   29 bodù
+     2. místo   80 bodù       10. místo   26 bodù
+     3. místo   60 bodù       11. místo   24 bodù
+     4. místo   50 bodù       12. místo   22 bodù
+     5. místo   45 bodù       13. místo   20 bodù
+     6. místo   40 bodù       14. místo   18 bodù
+     7. místo   36 bodù       15. místo   16 bodù
+     8. místo   32 bodù       16. místo   15 bodù
+
+
+   Závod drustev:
+    
+   Kromì závodu jednotlivcù mohou ve skocích na lyích soutìit také drustva.
+   Kadé drustvo má celkem ètyøi závodníky. Bodové ohodnocení tımu se získá 
+   jako souèet bodovıch ziskù jednotlivcù, kteøí tvoøí drustvo. Vítìzí ten 
+   celek, kterı získá dohromady nejvyšší poèet bodù. Pro bodování jednotlivıch
+   závodníkù v soutìi drustev platí stejná pravidla jako pro závod 
+   jednotlivcù.
+
+   V sérii závodù Svìtového poháru drustev jsou bodová ohodnocení za umístìní
+   následující: Vítìznı tım získává 200 bodù, druhı celek si odváí 160 bodù,
+   tøetí bere 120 bodù a ètvrté drustvo se musí spokojit se 100 body. Ostatní
+   tımy zùstávají bez bodu.
+
+_____________________________________________________________________________
+5. Jak skákat, neboli ovládání hry.
+
+
+   ROZJEZD:
+
+   Ve chvíli, kdy se rozsvítí zelené svìtlo, tvùj závodník má pøesnì 15 
+   sekund k tomu, aby zahájil svùj pokus. Po pìti sekundách zaène zelené 
+   svìtlo blikat, co signalizuje, e soutìícímu zbıvá má do konce limitu
+   10 vteøin. Kdy závodník neprovede svùj pokus do konce èasového limitu,
+   je diskvalifikován.
+
+   V rohu obrazovky je ukazatel vìtru. Ten indikuje smìr a rychlost vìtru. 
+   Rychlost je udávána v m/s. Optimální vìtrné podmínky pro skok jsou 
+   protivítr o rychlosti 1,5 - 3,5 m/s, nicménì udanı údaj se mùe trochu 
+   lišit v závislosti na velikosti mùstku a stylu skoku.
+
+   Ve chvíli, kdy se domníváš, e podmínky ke skoku jsou ideální a ty jsi 
+   pøipraven k rozjezdu, klikni levım tlaèítkem myši.
+
+
+   ODRAZ:
+
+   Jakmile se závodník dostane ke kraji mùstku, pøiprav se k odrazu. Toho
+   dosáhneš tak, e klikneš souèasnì obìma tlaèítky myši a pøidríš. Po 
+   odrazu obì tlaèítka zase pustíš. Odraz je tøeba provést v co nejvhodnìjším
+   okamiku v co nejlepší pozici na hranì mùstku. Tento úkon je tøeba dobøe 
+   natrénovat a odpozorovat co nejlepší pozici k odrazu, a to i v závislosti 
+   na velikosti mùstku. Bez dobøe povedeného odrazu nelze dosáhnout kvalitního 
+   vıkonu.
+
+
+   LET:   
+
+   Po odrazu je ve vzduchu tøeba dostat závodníka do co nejlepší pozice pro 
+   let a tuto pozici udret, aby závodník doletìl co nejdále. To lze uèinit 
+   nastavením skokanova tìla do vhodného úhlu tak, aby byl nesen díky odporu 
+   vzduchu. Tento úhel lze kontrolovat jemnım pohybem myši smìrem nahoru a dolù.
+   Nezapomeò na smìr a úhel vìtru. Sna se povìtrnostní podmínky co nejlépe 
+   vyuít. Pro rùznou rychlost a rùznı smìr vìtru, samozøejmì i v závislosti 
+   na velikosti mùstku, je ideální malièko odlišné nastavení úhlu závodníkova 
+   tìla.
+
+
+   DOSKOK:
+
+   Existují dva hlavní zpùsoby doskoku. Na obì lye souèasnì nebo do telemarku.
+   V pøípadì telemarku je tøeba bezpeènì doskoèit do jakéhosi pokleku, kdy je 
+   jedna lye pøedsunuta pøed druhou. Jestlie je tvùj skok velmi dlouhı, je 
+   bezpeènìjší pøistát na obì lye souèasnì, jeliko tento zpùsob pøistání je
+   ménì nároènı na techniku. Telemarkovı doskok je technicky nároènìjší a 
+   vyaduje delší dobu k provedení. Na druhé stranì je lépe bodovì ohodnocen 
+   ohlednì stylu oproti klasickému doskoku na obì lye.
+
+   Chceš-li doskoèit klasicky, na obì lye zároveò, stiskni souèasnì obì 
+   ovládací tlaèítka myši.
+
+   Chceš-li se pøedvést pøed rozhodèími a provést telemarkovı doskok, stiskni 
+   nejprve na pravé tlaèítko myši a následnì na levé tlaèítko myši. Delší pauza
+   mezi obìma stisky vyústí v širší a esteticky lépe provedenı telemark, ale 
+   pøíliš dlouhá pauza zpùsobí pád závodníka. Kliknutí lze provést i v opaèném 
+   poøadí, ne je uvedeno.
+
+ 
+   REKORDY MÙSTKU:
+  
+   Hra Deluxe Ski Jump uchovává veškeré rekordy dosaené na všech 32 mùstcích.
+   Dosaenı rekord je ovšem uznán pouze v pøípadì oficiální soutìe (tedy ne v
+   tréninkovém módu) a jestlie závodník pøi doskoku nespadne. Závodníci
+   kontrolovaní poèítaèem nemohou bıt dritelem rekordu mùstku.
+
+   Na naší webové stránce www.mediamond.fi mùeš najít rekordy mùstkù dosaené 
+   mnoha hráèi z celého svìta. Ty sám sem mùeš pøidat svoje vıkony, jestlie 
+   vlastníš registrovanou verzi Deluxe Ski Jump.
+
+
+_____________________________________________________________________________
+6. Registrace Deluxe Ski Jump
+
+   Registrací Deluxe Ski Jump získáš své osobní registraèní èíslo, které 
+   napíšeš do políèka "èíslo" v menu "Chci se zaregistrovat! / Odemkni 
+   registovanou verzi" v DEMO verzi hry Deluxe Ski Jump. Tím zpøístupníš:
+
+       * 32 mùstkù (K50 - K250), vèetnì jednoho mùstku v ÈR
+       * Podporu hry a 16ti hráèù
+       * Mód závodu drustev
+       * Monost zaznamenat své vlastní rekordy mùstku do
+         mezinárodní databáze na naší webové stránce
+       * Aktualizace zdarma
+
+   Instrukce k registraci
+
+   1.  Vytiskni nebo zkopíruj ji vytištìnı registraèní formuláø 
+       (ORDERCZE.txt) na papír.
+   2.  Formuláø èitelnì vyplò, nejlépe hùlkovım písmem.
+
+   3A. Jestlie chceš platit v hotovosti, vlo poadovanı obnos nutnı k 
+       registraci (viz. ORDERCZE.txt) do obálky spoleènì s vyplnìnım 
+       formuláøem.
+   3B. V pøípadì platby bankovním pøevodem vlo do obálky spoleènì s 
+       vyplnìnım registraèním formuláøem také potvrzení o bankovním 
+       pøevodu.
+
+       Pozn.: Cena je 8 USD (americkıch dolarù), 15 DM (nìmeckıch marek) 
+              nebo 300 CZK (èeskıch korun). Popøípadì se podívej do souboru 
+              ORDERCZE.txt, abys zjistil, jakımi mìnami lze platit.
+
+       Pozn. k bodu 1. - U nìkterıch tiskáren dochází pøi tisku dokumentu
+                         Ordercze.txt z prostøedí DOSu, a tedy i v pøípadì
+                         tisku dokumentu pøímo ze hry z menu "Vytiskni 
+                         objednávku", k nesprávnému vytištìní èeskıch 
+                         charakteristickıch znakù a to i v situaci, e 
+                         dokument je zobrazen správnì. Pokud tento pøípad
+                         nastane, prosím, vytisknìte dokument Ordercze.txt 
+                         pøímo ve Windows a nebo poijte anglickou verzi
+                         Ordereng.txt. Tu lze vytisknout bez chyb pøímo
+                         v DOSu èi ze hry. To lze uèinit následujícím
+                         zpùsobem. Souborem Setlang.exe nastavíš anglickou
+                         verzi hry (english), v hlavním menu klikneš na 
+                         "Register now!" a poté na "Print ordering form".
+
+   4.  Zašli svou objednávku (registraèní formuláø) a platbu na adresu:
+         "DSJ"
+          Mediamond Tmi
+          Kaenkatu 4 B 20
+          04230 Kerava
+          Finland
+
+   5.  Poté co obdríš své registraèní èíslo, zadej ho v poli "èíslo" v menu
+       "Chci se zaregistrovat! / Odemkni registrovanou verzi"
+
+   Prosím, dej nám asi 1-10 dní na doruèení registraèního èísla. Máš-li 
+   jakékoliv otázky, prosím, kontaktuj nás na e-mailové adrese: 
+   jussi.koskela@mediamond.fi.
+
+_____________________________________________________________________________
+7. Tvùrci hry a kontakt info
+
+  Deluxe Ski Jump : Jussi Koskela
+  Fotografie      : Kalevi Koskela
+  Èeskı pøeklad   : Petr Šmejkal
+
+  E-mail          : jussi.koskela@mediamond.fi
+  Webová stránka  : www.mediamond.fi
+
+  Adresa          : Mediamond Tmi
+                    Kaenkatu 4 B 20
+                    04230 Kerava
+                    Finland

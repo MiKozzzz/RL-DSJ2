@@ -1,0 +1,185 @@
+
+                        D E L U X E   S K I   J U M P
+
+                          (c)  Jussi Koskela 2001
+
+
+Sadržaj:
+   1. O Deluxe Ski Jump-u
+   2. Šta zahteva?
+   3. Startovanje igrice
+   4. O Ski-skokovima
+   5. Kako skoèiti?
+   6. Registrovanje DSJ-a
+   7. O autorima
+
+Upotrebljavate ovaj program na sopstveni rizik. Izdavaè nema nikakvu
+odgovornost za moguæu štetu ciji je uzrok Deluxe Ski Jump.
+
+_____________________________________________________________________________
+1. O Deluxe Ski Jump-u
+
+   Deluxe Ski Jump spada u novije simulacije ski-skokova u 3D grafici.
+   Zahvaljujuæi ispoštovanim zakonima fizike, realizam je jedan od najveæih
+   ikad viðenih u sportskim igricama.
+
+   DSJ-ov sjajno dizajnirani interfejs za miša omoguæava punu kontrolu nad
+   realno napravljenim skakaèem. Možete balansirati vaš odraz, podesiti ugao
+   tela skakaèa tokom leta, paziti na jaèinu vetra i konaèno napraviti
+   perfektan skok da zadovoljite sudije.
+
+   Skakaonice variraju od siæušne K50 skakaonice do ogromne K250 letaonice.
+   Sve 32 skakaonice nude jedinstveno skakaèko iskustvo.
+
+   Takoðe, možete se takmièiti sa vašim prijateljima i organizovati velike
+   turnire jer DSJ omoguæava takmièenje 16 igraèa istovremeno.Svetski kup sa
+   32 skakaonice i 16 igraèa je nešto neverovatno zanimljivo i uzbudljivo!
+    Uživajte!
+_____________________________________________________________________________
+2. Šta zahteva?
+
+   Potrebna konfiguracija
+
+     *Pentium 166 Mhz ili brži
+     *Miš sa dva tastera
+     *VGA kompatibilna video kartica
+     *470 kb slobodne osnovne memorije
+     *DOS 4.0 ili noviji
+
+   Preporuèujemo
+
+     *Sound Blaster
+     *Windows 95 ili noviji
+
+_____________________________________________________________________________
+3. Startovanje igrice
+
+   Da bi pokrenuli Deluxe Ski Jump startujte DSJ.EXE
+
+   Promenite zvuène opcije u fajlu SETSOUND.BAT
+   Promenite jezik u fajlu SETLANG.BAT
+
+_____________________________________________________________________________
+4. O Ski-skokovima
+
+   Takmièenje u ski-skokovima se sastoji od dve serije skokova. Skokovi se
+   ocenjuju po pitanju dužine skoka i stila. Pobednik je onaj koji ima najveæi
+   totalni rezultat.
+
+   Kritièna taèka (crvena linija) vredi 60 poena (120 poena na letaonicama).
+   Svaki metar posle kritiène taèke vredi 2.0 poena na maloj skakaonici, 1.8
+   na velikoj i 1.2 na letaonici.
+
+   Postoji 5 sudija koji ocenjuju skok. Svaki sudija može dati ocenu od 1-20.
+   Najveca i najmanja ocena se ignorišu.Karakteristike za dobar stil su:
+   dobro balansiran odraz, stabilno letenje i dobar doskok sa telemarkom.
+
+   Na takmièenju u skokovima ocene u svetskom kupu se dodeljuju kao što je
+   prikazano:
+
+   1.mesto  100 poena        9.mesto   29 poena
+   2.mesto   80 poena       10.mesto   26 poena
+   3.mesto   60 poena       11.mesto   24 poena
+   4.mesto   50 poena       12.mesto   22 poena
+   5.mesto   45 poena       13.mesto   20 poena
+   6.mesto   40 poena       14.mesto   18 poena
+   7.mesto   36 poena       15.mesto   16 poena
+   8.mesto   32 poena       16.mesto   15 poena
+
+   Pored individualnih takmièenja i timovi se mogu takmièiti.Svaki tim se
+   sastoji od 4 takmièara, èiji se poeni sabiraju. Standardna pravila važe
+   i za timsko takmièenje takoðe.
+
+   U timskom takmièenju pobednièki tim dobija 200 poena, drugoplasirani
+   160 poena, treæi 120 poena i èetvrti 100 poena.
+
+_____________________________________________________________________________
+5. Kako skoèiti?
+
+   Kada se crveno svetlo iskljuèi imate taèno 15 sekundi da zapoènete skok.
+   Zeleno svetlo æe poèeti da treperi kada vam je ostalo 10 sekundi. Ako
+   do tada ne zapoènete skok isti æe biti diskvalifikovan.
+
+   Vetrokaz pokazuje pravac i jaèinu vetra. Brzina je izražena u metrima po
+   sekundi. Optimalna jaèina vetra je izmedu 1.5 - 3.5 m/s ali ona varira
+   na svakoj skakaonici i zavisi od stila leta.
+
+   Kada mislite da je stanje u redu kliknite levim tasterom miša da bi
+   zapoèeli spuštanje.
+
+   Kada skakaè doðe blizu kraja skakaonice treba da napravite snažan skok.
+   Ovo æete uraditi ako pritisnete oba tastera na mišu istovremeno. Posle
+   vašeg odraza pustite tastere.
+
+   Dok ste u vazduhu treba da imate dobru poziciju za let i da je održavate.
+   Možete kontrolisati ugao tela pomeranjem miša polako gore/dole.
+   Ne zaboravite da obratite pažnju na vetar!
+
+   Postoje dva naèina za doskok: doskok sa dve noge i tzv. telemark doskok.
+   Koristite doskok sa dve noge ako letite predaleko. Telemark doskok je teži
+   ali dobiæete veæe ocene za njega.
+
+   Ako hoæete da napravite doskok sa dve noge pritisnite oba tastera na mišu
+   istovremeno.
+
+   Ako hoæete da napravite telemark doskok kliknite prvo desnim a potom levim
+   tasterom. Veæi razmak izmeðu dva klika znaèi duži telemark. Takoðe možete
+   pritisnuti tastere obrnutim redosledom.
+
+   Deluxe Ski Jump æe saèuvati vaše rekorde za sve 32 skakaonice. Rekordi
+   su prihvaæeni samo u zvaniènim takmièenjima i ispravni su samo ako
+   ostanete na nogama. Kompjutersko-kontrolisani skakaèi ne mogu imati
+   rekorde.
+
+   Na našem web site-u www.mediamond.fi možete naæi internacionalne rekorde.
+
+_____________________________________________________________________________
+6. Registrovanje DSJ-a
+
+   Registrovanjem DSJ-a dobiæete svoj registarski kod sa kojim možete
+   otkljuèati sledece:
+
+       *32 skakaonice (K50-K250)
+       *Podrška za 16 igraèa
+       *Moguænost igranja timskog kupa
+       *Podrška za rekorde na internetu
+       *Slobodne dopune
+
+   Instrukcije za registrovanje
+   1. Odštampajte formular (orderser.txt) na papir.
+   2. Popunite formular èitko.
+
+  3A. Ako želite da platite u gotovini pošaljite iznos zajedno sa formularom.
+  3B. Ako želite da platite preko bankovnog raèuna pošaljite i priznanicu.
+      Cena je 8 USD / 15 DEM. Molimo Vas proverite valute za vašu državu u
+      fajlu orderser.txt.
+
+   4. Pošaljite formular i novac na adresu
+
+             "DSJ"
+          Mediamond Tmi
+          Kaenkatu 4 B 20
+          04230 Kerava
+          Finland
+
+   5. Kada dobijete svoj reg. kod otvorite opciju "Registruj sada/Otkljuèaj DSJ"
+   i ukucajte ga.
+
+   Imajte u vidu 1-10 dana za dostavu koda.
+   Ako imate pitanja molimo kontaktirajte autora:
+   jussi.koskela@mediamond.fi
+
+_____________________________________________________________________________
+ 7. O autorima
+
+    Autor Deluxe Ski Jump-a : Jussi Koskela
+    Fotografije             : Kalevi Koskela
+    Srpski prevod           : Vuk Krajaèiæ
+
+    E-mail   : jussi.koskela@mediamond.fi
+    Web site : www.mediamond.fi
+
+    Pošta    : Mediamond Tmi
+               Kaenkatu 4 B 20
+               04230 Kerava
+               Finland

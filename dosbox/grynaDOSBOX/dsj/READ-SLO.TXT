@@ -1,0 +1,196 @@
+
+                        D E L U X E   S K I   J U M P
+
+                           (c) Jussi Koskela 2001
+
+
+Vsebina
+   1. O igri Deluxe Ski Jump
+   2. Sistemske zahteve
+   3. Zagon igre
+   4. O smuèarskih skokih
+   5. Kako skakati?
+   6. DSJ - registracija
+   7. Zasluge in kontaktne informacije
+
+
+To programsko opremo uporabljate na lastno odgovornost. Razvijalec ni
+odgovoren za morebitno nastalo škodo, kakorkoli povezano z uporabo
+igre Deluxe Ski Jump.
+
+_____________________________________________________________________________
+1. O igri Deluxe Ski Jump
+
+   Igra Deluxe Ski Jump je simulacija smuèarskih skokov nove generacije v 3D
+   grafiki. Zaradi natanènega modeliranja resniènih fizikalnih pojavov, je
+   realizem med najnatanènejšimi v športnih igrah.
+
+   Dobro oblikovan miškin vmesnik v igri DSJ vam omogoèa popoln nadzor nad
+   skakalcem, ki je animiran v realnem èasu. Lahko doloèite trenutek odskoka,
+   išèete pravo lego telesa v zraku, izkorišèate veter in na koncu naredite
+   še pristanek, ki naj bo kar se le da dober in s tem ustrezno sodniško
+   nagrajen.
+
+   Skakalnic je veè vrst: od majhne 50-metrske do ogromne 250-metrske
+   letalnice. Vseh 32 skakalnic vam nudi edinstveno doživetje smuèarskih
+   skokov.
+
+   Lahko pa tudi izzovete vse svoje prijatelje v velikem tekmovanju, saj
+   igra DSJ podpira do 16 igralcev naenkrat. Svetovni pokal z vsemi 32
+   skakalnicami in 16 igralci je nekaj zares zabavnega in vznemirljivega!
+
+   Uživajte!
+
+_____________________________________________________________________________
+2. Sistemske zahteve
+
+   Zahtevana sistemska konfiguracija:
+      * Pentium 166 ali hitrejši
+      * miška z dvema gumboma
+      * z VGA združljiva grafièna kartica
+      * 470 kb prostega osnovnega spomina
+      * Dos 4.0 ali novejši
+
+   Neobvezno
+      * Sound Blaster ali združljiva zvoèna kartica
+      * Windows 95 ali novejši
+
+_____________________________________________________________________________
+3. Zagon igre
+
+   Za igranje Deluxe Ski Jump poženite DSJ.EXE
+
+   Za spreminjanje zvoènih nastavitev poženite SETSOUND.BAT
+   Za izbiro jezika poženite SETLANG.BAT
+
+_____________________________________________________________________________
+4. O smuèarskih skokih
+
+   Tekmovanje v smuèarskih skokih je sestavljeno iz dveh skokov. Skoki se
+   toèkujejo glede na dolžino in slog. Zmagovalec je skakalec z najvišjim
+   seštevkom toèk iz obeh skokov.
+
+   Kritièna toèka (rdeèa èrta) je vredna 60 toèk (120 toèk na letalnicah).
+   Vsak meter nad kritièno toèko je vreden 2.0 toèke na majhnih skakalnicah,
+   1.8 toèke na veèjih skakalnicah in 1.2 toèke na letalnicah.
+
+   Slog skoka ocenjuje pet sodnikov. Vsak sodnik lahko oceni skok s toèkami
+   med 0 in 20. Najvišja in najnižja ocena za slog se ne upoštevata.
+   Lastnosti dobre ocene so naslednje: dobro uravnotežen odskok, stabilna
+   lega v zraku in lep doskok s telemarkom.
+
+   Toèkovanje za svetovni pokal tekme v smuèarskih skokih je naslednje:
+
+     1. mesto 100 toèk        9. mesto  29 toèk
+     2. mesto  80 toèk       10. mesto  26 toèk
+     3. mesto  60 toèk       11. mesto  24 toèk
+     4. mesto  50 toèk       12. mesto  22 toèk
+     5. mesto  45 toèk       13. mesto  20 toèk
+     6. mesto  40 toèk       14. mesto  18 toèk
+     7. mesto  36 toèk       15. mesto  16 toèk
+     8. mesto  32 toèk       16. mesto  15 toèk
+
+   Prav tako lahko tudi ekipe tekmujejo v smuèarskih skokih. Vsaka ekipa
+   ima po štiri skakalce, katerih toèke se seštevajo.
+   Zgoraj opisana pravila veljajo tudi za ekipna tekmovanja.
+
+   Pri ekipnih tekmovanjih zmagovalna ekipa dobi 200 pokalnih toèk, drugo
+   uvršèena ekipa 160, tretje uvršèena 120 in zadnje (èetrto) uvršèena
+   100 toèk.
+
+_____________________________________________________________________________
+5. Kako skakati?
+
+   Ko se prižge zelena luè, imate natanko 15 sekund èasa, da priènete vaš
+   skok. Zelena luè zaène utripati, ko vam ostane še 10 sekund. Èe prekoraèite
+   odmerjen èas, boste diskvalificirani.
+
+   Vetromer (aerometer) prikazuje smer in hitrost vetra. Enota za hitrost je
+   meter na sekundo. Ponavadi je najprimernejši nasprotni veter (1.5 - 3.5 m/s),
+   vendar se to lahko malo razlikuje glede na skakalnico in slog skakanja.
+
+   Ko menite, da imate dobre pogoje za skok in ste pripravljeni za spust po
+   skakalnici, kliknite levi miškin gumb.
+
+   Ko skakalec doseže odskoèno mizo, morate moèno odskoèiti. To storite
+   z istoèasnim pritiskom na levi in desni miškin gumb. Po odskoku
+   spustite miškina gumba.
+
+   V zraku je pomemben prehod v ugodno letalno lego in jo tudi ohraniti do
+   pristanka. Telo oziroma lego skakalca lahko nadzorujete z nežnim
+   premikanjem miške gor in dol.
+   Ne pozabite izkoristiti vetra!
+
+   Za pristanek obstajata dva naèina: sonožni doskok in doskok s telemarkom.
+   Sonožni doskok uporabite, èe letite predaleè. Doskok s telemarkom je
+   težavnejši, vendar bolje ocenjen, èe je dobro izveden.
+
+   Èe želite doskoèiti sonožno, hkrati kliknite na levi in desni miškin
+   gumb.
+
+   Namesto tega kliknite najprej desni in nato še levi miškin gumb, èe
+   želite pristati s telemarkom. Daljši zamik med klikoma pomeni širši
+   telemark. Na gumba lahko kliknete tudi v obratnem vrstnem redu.
+
+
+   Igra Deluxe Ski Jump zapisuje rekorde na vseh 32 skakalnicah.
+   Rekordi skakalnic veljajo le na uradnih tekmovanjih in to le takrat,
+   ko skakalec ob pristanku ostane na nogah. Skakalci, ki jih upravlja
+   raèunalnik, si ne morejo lastiti rekordov.
+
+   Na naši spletni strani, www.mediamond.fi , boste našli mednarodne
+   rekorde skakalnic.
+
+_____________________________________________________________________________
+6. Deluxe Ski Jump - registracija
+
+   Z registracijo igre Deluxe Ski Jump boste dobili osebni registracijski
+   kljuè, ki bo odklenil naslednje možnosti v brezplaèni demo razlièici:
+
+       * 32 skakalnic (K50 - K250)
+       * 16 skakalcev
+       * naèin ekipnega tekmovanja
+       * podpora rekordom skakalnic na spletu
+       * brezplaène posodobitve
+
+   Navodila za registracijo
+   1.  Natisnite ali preslikajte obrazec za naroèilo (orderslo.txt) na papir.
+   2.  Èitljivo izpolnite obrazec.
+
+   3A. Èe boste plaèali z gotovino, priložite toèno vsoto denarja.
+   3B. Èe boste plaèali z banènim nakazilom, priložite potrdilo o plaèilu.
+       Cena znaša 8 USD / 15 DEM. Prosimo, da preverite vaše krajevne cene
+       in informacije o plaèilu v datoteki orderslo.txt.
+
+   4.  Vaše naroèilo skupaj s plaèilom pošljite na:
+         "DSJ"
+          Mediamond Tmi
+          Kaenkatu 4 B 20
+          04230 Kerava
+          Finland
+
+   5.  Ob prejetju registracijskega kljuèa vnesite le-tega v meni
+       "Registrirajte se sedaj / Odkleni DSJ".
+
+   Prosimo da upoštevate 1-10 dni za dostavo registracijskega kljuèa.
+   Dodatna vprašanja lahko pošljete na naslednji naslov:
+   jussi.koskela@mediamond.fi
+
+
+_____________________________________________________________________________
+7. Zasluge in kontaktne informacije
+
+  Avtor igre Deluxe Ski Jump :     Jussi Koskela
+  Fotografija                :     Kalevi Koskela
+  Slovenski prevod           :     Matej Ahaèiè (matej.ahacic@cyberdude.com)
+
+  E-pošta:   jussi.koskela@mediamond.fi
+  Splet:     www.mediamond.fi
+
+  Pošta:     Mediamond Tmi
+             Kaenkatu 4 B 20
+             04230 Kerava
+             Finland
+
+
+

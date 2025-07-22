@@ -1,0 +1,224 @@
+
+                        D E L U X E   S K I   J U M P
+
+                           (c) Jussi Koskela 2001
+
+
+Inhalt
+   1. šber Deluxe Ski Jump
+   2. Systemvoraussetzungen
+   3. Das Spiel starten
+   4. Informationen zum Skispringen
+   5. Wie springt man?
+   6. Deluxe Ski Jump Registrierung
+   7. Mitwirkende und Ansprechpartner
+
+
+Die Benutzung dieser Software erfolgt auf eigenes Risiko. Der Programmierer
+bernimmt keinerlei Haftung fr jeglichen Defekt, der durch das Benutzen von
+Deluxe Ski Jump entsteht.
+
+_____________________________________________________________________________
+1. šber Deluxe Ski Jump
+
+   Deluxe Ski Jump ist ein Skisprungspiel der neuen Generation. Es blendet
+   nicht mit Videosequenzen sondern vermittelt einen unglaublich hohen
+   Realismus. Durch das physikalisch exakt berechnete Flugmodell erreicht es
+   eine neue Dimension der Realit„t in Sportspielen. 
+
+   Ein weiterer grosser Pluspunkt ist die intuitive Steuerung des Springers.
+   Man steuert den kompletten Sprung mit der Maus. Vom gut ausbalancierten
+   Absprung, ber das gekonnte Gleiten bis hin zur perfekten Landung. Nach
+   ein paar Sprngen, "sprt" man fast den Wind...
+
+   Es gibt 32 Schanzen im Spiel, vom K50-Hgel bis zur K250-Flugschanze. Die
+   Schanzen sind alle unterschiedlich. Man braucht schon einiges an šbung, um
+   auf allen Schanzen Topleistung zu bringen.
+
+   Fordere all Deine Freunde heraus! Mit DSJ kannst Du grosse Turniere 
+   veranstalten. Mit bis zu 16 Spieleren auf allen 32 Schanzen zu springen,
+   bringt schon einiges an Stimmung!
+
+   Viel Spass!
+
+_____________________________________________________________________________
+2. Systemvoraussetzungen
+
+   Ben”tigte Vorraussetzungen:
+      * Pentium 166 oder schneller
+      * 2-Tasten Maus
+      * VGA kompatible Grafikkarte
+      * 470 kb freier Hauptspeicher
+      * Dos 4.0 oder besser
+
+   Optional:
+      * Sound Blaster oder kompatible Soundkarte
+      * Windows 95 oder besser
+
+_____________________________________________________________________________
+3. Das Spiel starten
+
+   Einfach die DSJ.EXE aufrufen.   
+
+   Um die Soundkarte einzustellen, bitte die SETSOUND.BAT aufrufen.   
+   Wenn Du die Sprache ver„ndern m”chtest, rufst Du die SETLANG.BAT auf.
+
+_____________________________________________________________________________
+4. Informationen zum Skispringen
+
+   Ein Skisprungwettbewerb besteht aus zwei Sprngen. Man bekommt Punkte fr
+   die Weite und die Haltung w„hrend der Flugphase. Wer die h”chste Gesamt-
+   punktzahl hat, ist der Sieger des Wettbewerbs.   
+
+   Die Berechnung der Punktzahl erfolgt nach einem festgelegten Schema. Jede
+   Schanze hat einen sogenannten Kalkulationspunkt (K-Punkt, markiert durch 
+   eine rote Linie). Dieser ist abh„ngig von der Gr”sse der Schanze. Fr das
+   Erreichen des K-Punktes bekommt man 60 Punkte auf Sprungschanzen und 120 
+   Punkte auf Flugschanzen. Fr jeden Meter, den man weiter, oder auch krzer,
+   springt bekommt man weitere Punkte addiert bzw. subtrahiert. Auf kleinen
+   Schanzen entspricht jeder Meter 2,0 Punkten, auf einer Grossschanze 1,8
+   Punkten und auf einer Flugschanze 1,2 Punkten.
+
+   Zu diesen Weitenpunkten kommen dann noch Punkte fr den Sprungstil hinzu.
+   Dazu sind an der Schanze fnf Sprungrichter. Diese bewerten den Flugstil
+   und die Landung des Springers. Die Sprungrichter haben einen Spielraum von
+   0 - 20 Punkten. Bewertet werden ein sauberer Absprung, eine stabile
+   Fluglage und eine gute Telemarklandung. (N„heres dazu im Abschnitt fnf)
+   Die h”chste und die niedrigste Bewertung fallen weg, so dass 3 Werte
+   brig bleiben. Diese werden werden zu der Weitenwertung addiert.
+   Die Summe ist dann die Punktzahl fr einen Sprung. Um die Gesmatpunktzahl
+   zu erhalten, werden demanch beide Sprungergebnisse addiert.
+
+   Die Punkte fr die Weltcup Wertung werden wie folgt verteilt:
+
+     1. Platz 100 Punkte        9. Platz  29 Punkte
+     2. Platz  80 Punkte       10. Platz  26 Punkte
+     3. Platz  60 Punkte       11. Platz  24 Punkte
+     4. Platz  50 Punkte       12. Platz  22 Punkte
+     5. Platz  45 Punkte       13. Platz  20 Punkte
+     6. Platz  40 Punkte       14. Platz  18 Punkte
+     7. Platz  36 Punkte       15. Platz  16 Punkte
+     8. Platz  32 Punkte       16. Platz  15 Punkte
+
+   Neben den Einzelspringen, gibt es auch noch Teamspringen. Die Berechnung
+   ist exakt die gleiche, es werden einfach alle Sprnge addiert. Jedes Team
+   besteht aus vier Springern.
+
+   Im Team Weltcup (Teamcup) ist die Wertung jedoch etwas anders. Das erste
+   Team erh„lt 200 Punkte, das zweite 160, das dritte 120 und das vierte 100
+   Punkte.
+
+_____________________________________________________________________________
+5. Wie springt man?
+
+   Sobald die Ampel auf grn umspringt, bleiben Dir 15 Sekunden um mit Deinem
+   Sprung zu beginnen. Wenn die Ampel anf„ngt zu blinken, bleiben noch zehn
+   Sekunden. Solltest Du innerhalb dieser Zeit nicht starten, wirst Du
+   disqualifiziert.
+
+   Der Windmesser zeigt die Windrichtung und die Geschwindigkeit an. Die
+   Einheit des Windgeschwindigkeit ist Meter pro Sekunde (m/s). Die optimalen
+   Bedingungen liegen bei 1,5 - 3,5 m/s Gegenwind. Auf manchen Schanzen
+   k”nnen aber auch leicht abweichende Bedingungen von Vorteil sein. Es h„ngt
+   auch davon ab, wie man springt. Einfach mal ein bisschen ausprobieren.
+
+   Wenn Du der Meinung bist, das die Bedingungen fr Dich gut sind, kannst Du
+   durch Drcken der linken Maustaste losfahren.
+
+   Wenn Du am Schanzentisch angekommen bist, ist ein kr„ftiger Absprung
+   n”tig. Der Absprung wird durch gleichzeitges Drcken der beiden Maustasten
+   ausgel”st. Hierbei gilt, je "gleichzeitiger" desto besser! Nach dem
+   Absprung kannst Du die Maustasten wieder loslassen.
+
+   Wenn Du in der Luft bist, ist es wichtig m”glichst schnell eine gute
+   Flugposition zu erreichen und diese dann beizubehalten. Der Springer wird
+   hier durch behutsames Bewegen der Maus gesteuert. Versuch vom Wind zu
+   profitieren!
+
+   Nach dem hoffentlich weiten Flug kommen wir nun zur Landung. Hier hast Du
+   zwei M”glichkeiten: "Kacheln" oder eine Telemarklandung. Letztere ist ein
+   wenig schwieriger in der Durchfhrung, bringt dafr aber auch einige
+   Pluspunkte bei den Sprungrichtern. Bei der Telemarklandung macht der
+   Springer eine Art Knicks, indem er die Fsse leicht versetzt auf den Boden
+   bringt. Diese Landung solltest Du prim„r einsetzen. In hohen Weitenbe-
+   reichen ist eine Telemarklandung meist nicht mehr m”glich. Hier solltest
+   Du "kacheln". Das heisst nichts anderes, als "einfach nur landen".
+
+   Und so fhrst Du die unterschiedlichen Landungen aus:
+
+   Normale Landung: Beide Maustasten gleichzeitig drcken
+   Telemarklandung: Erst die rechte und dann die linke Maustaste drcken. Je
+                    gr”sser die Zeitspanne zwischen den Klicks, desto breiter
+                    wird der Telemark. (Die Reihenfolge der Tasten ist
+                    beliebig)
+
+   Fhre am besten die verschiedenen Landungen ein paar mal durch, um Dich an
+   das Timing zu gew”hnen.
+
+   Deluxe Ski Jump speichert die Schanzenrekorde fr alle 32 Schanzen. Um
+   einen Rekord aufzustellen musst Du Dich in einem ofiziellen Wettbewerb
+   befinden (Trainingssprnge z„hlen also nicht) und den jeweiligen Sprung
+   erfolgreich beenden. Das heisst, eine gltige Landung absolvieren.
+   KI-Spieler k”nnen keine Rekorde aufstellen.
+   
+   Auf unserer Webseite (www.mediamond.fi) findest Du die internationalen
+   Schanzenrekorde!
+
+_____________________________________________________________________________
+6. Deluxe Ski Jump Registrierung
+
+   Wenn Du DSJ fr Dich registrieren l„sst, bekommst Du neben Deinem
+   pers”nlichen Registrierungsschlssel noch dir folgenden weiteren
+   Features:   
+
+       * 32 Schanzen (K50 - K250)
+       * Mehrspielermodus mit bis zu 16 Spielern
+       * Teamcup Wettkampfmodus
+       * Untersttzung fr webbasierte Rekordverwaltung
+       * Kostenlose Updates
+
+   Anleitung zur Registrierung
+
+   1.  Einfach das Formular (orderger.txt) ausdrucken.
+   2.  M”glichst leserlich ausfllen.
+
+   3A. Falls Du bar zahlen m”chtest, schick den Betrag einfach im Umschlag
+       mit.
+   3B. Wenn Du das Geld berweisen m”chtest, bitten wir Dich eine Quittung
+       Deiner Bank beizufgen.
+
+       Der Preis betr„gt 8 USD / 15 DEM. Weitere Informationen findest Du in
+       der Datei orderger.txt.
+
+   4.  Dann geht alles an diese Adresse:
+         "DSJ"
+          Mediamond Tmi
+          Kaenkatu 4 B 20
+          04230 Kerava
+          Finland
+
+   5.  Sobald Du Deinen Registrierungsschlssel erhalten hast, kannst Du das
+       Spiel unter "Deluxe Ski Jump Registrierung / DSJ entsperren"
+       freischalten.
+
+   Es kann bis zu zehn Tagen dauern, bis Du Deinen Registrierungsschlssel
+   bekommst. Wir bemhen uns, ihn so schnell wie m”glich an Dich zu senden.
+
+   Wenn Du Fragen zum Status Deiner Bestellung hast, wende Dich bitte an:
+   jussi.koskela@mediamond.fi
+
+
+_____________________________________________________________________________
+7. Mitwirkende und Ansprechpartner
+
+  Deluxe Ski Jump von  : Jussi Koskela
+  Fotografie           : Kalevi Koskela
+  Deutsche šbersetzung : Lars Becker (lars.vegas@ymca.de)
+
+  E-Mail   : jussi.koskela@mediamond.fi
+  Webseite : www.mediamond.fi
+
+  Post     : Mediamond Tmi
+             Kaenkatu 4 B 20
+             04230 Kerava
+             Finland

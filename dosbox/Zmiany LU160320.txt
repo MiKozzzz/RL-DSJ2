@@ -1,0 +1,14 @@
+Pozmienia³em to i tamto.
+
+- Zwiêkszy³em pamiêc z 16MB na 32MB
+- Zmieni³em wartoœc cykli na tak¹ jak¹ DOSBox ustawi gdy mamy jakiœ procesor (wiêcej o tym jest opisane pod filmikiem na YT)
+- Podczas zmiany wartoœci cykli podczas gry (tzw. cycleup i cyledown) wartoœci ustawi³em po 300
+-----------------
+This_is_RockX - 2016
+-----------------
+Kontakt:
+E-m@il: zbigi12321@gmail.com
+YouTube: https://www.youtube.com/c/ThisisRockXHD - Zapraszam do subskrypcji
+Steam: http://steamcommunity.com/id/This_is_RockX - Dodaj do znajomych :-D
+Strona WWW: http://zbigi12321.wix.com/rockx - ŒledŸ moj¹ strone - Ma³y remont !
+SoundCloud: https://soundcloud.com/thisisrockx - Follow !

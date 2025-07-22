@@ -1,0 +1,49 @@
+Deluxe Ski Jump - formularz rejestracyjny
+
+Imiê   : _______________________________________________
+
+Adres  : _______________________________________________
+         _______________________________________________
+         _______________________________________________
+         _______________________________________________
+
+E-mail : _______________________________________________
+
+Dostarczenie klucza przez: [ ] poczta   [ ] e-mail
+
+Op³ata rejestracyjna:
+ [ ] Australia       10 AUD   [ ] W³ochy       15000 ITL
+ [ ] Austria        100 ATS   [ ] Japonia       1000 JPY
+ [ ] Kanada          12 CAD   [ ] Norwegia        60 NOK
+ [ ] Czechy         300 CZK   [ ] Polska          30 PLN
+ [ ] Dania           50 DKK   [ ] Szwecja         70 SEK
+ [ ] Estonia        120 EEK   [ ] Szwajcaria      12 CHF
+ [ ] Finlandia       40 FIM   [ ] Holandia        15 NLG
+ [ ] Francja         50 FRF   [ ] USA              8 USD
+ [ ] Niemcy          15 DEM   [ ] Wielka Brytania  5 GBP
+
+ [ ] Inne kraje 8 USD / 15 DEM / 40 FIM
+
+Rodzaj p³atnoœci:
+ [ ] Za³¹czona gotówka (bez czeków)
+
+ [ ] Przelew na konto (Proszê za³¹czyæ pokwitowanie)
+     Odbiorca: Mr. Jussi Koskela
+     Bank    : Keski-Uudenmaan Osuuspankki
+               Kerava, Finland
+     Konto   : 513205-246434
+
+Data i Podpis: ____________________________________
+
+========================================================
+Wyœlij ten formularz wraz z gotówk¹ lub pokwitowaniem
+przelewu na adres:
+
+      "DSJ"
+      Mediamond Tmi
+      Kaenkatu 4 B 20
+      04230 Kerava
+      Finland
+
+Proszê odczekaæ 1-10 dni na odbiór klucza.
+Pytania : jussi.koskela@mediamond.fi

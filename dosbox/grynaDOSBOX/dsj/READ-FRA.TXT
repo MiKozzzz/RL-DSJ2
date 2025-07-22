@@ -1,0 +1,198 @@
+
+                       D E L U X E   S K I   J U M P
+
+                           (c) Jussi Koskela 2001
+
+
+Contenu
+   1. A propos de Deluxe Ski Jump
+   2. Configuration minimale
+   3. Lancer le jeu
+   4. A propos du saut … ski
+   5. Comment sauter ?
+   6. Enregistrement Deluxe Ski Jump
+   7. Auteurs et contacts
+ 
+
+Vous allez utiliser ce logiciel … vos propres risques.Le d‚veloppeur d‚cline
+toute responsabilit‚ quand aux dommages ‚ventuels caus‚s par Deluxe Ski Jump.
+
+_____________________________________________________________________________
+1. A propos de Deluxe Ski Jump
+
+   Deluxe Ski Jump est une nouvelle g‚n‚ration de simulation de saut … ski
+   en graphismes 3D. Grƒce … la pr‚cision du mode de rendu physique, le
+   niveau de r‚alisme est un des plus hauts jamais vu dans les jeux de sport.
+
+
+   La conception de l'interface souris DSJ vous donne un contr“le total du
+   sauteur anim‚ en temps r‚el. Vous pouvez ‚quilibrer votre d‚collage,
+   ajuster l'inclinaison du corps pour voler, profiter du vent pour
+   finalement effectuer un atterrissage propre … plaire aux juges.
+
+   La hauteur des sommets de saut varie de petite K50 … ‚norme K250.
+   Ces 32 points de saut vous offrent une exp‚rience unique du saut … ski.
+
+   Vous pourrez ‚galement vous mesurer … tous vos amis au travers de super
+   tournois, DSJ permettant … 16 joueurs de jouer simultan‚ment.
+   Il va sans dire qu'avec 16 joueurs en Coupe du Monde et ses 32 sommets
+   de saut, l'amusement et l'excitation seront au rendez-vous!
+
+   Amusez vous!
+
+_____________________________________________________________________________
+2. Besoins SystŠme
+
+   Configuration minimale:
+      * Pentium 166 ou sup‚rieur
+      * Souris 2 boutons
+      * Carte vid‚o compatible VGA
+      * 470 kb de m‚moire de base
+      * Dos 4.0 ou sup‚rieur
+
+   Options:
+      * Sound Blaster ou compatible
+      * Windows 95 ou sup‚rieur
+
+_____________________________________________________________________________
+3. Lancer le jeu
+
+   Pour jouer … Deluxe Ski Jump lancez DSJ.EXE
+
+   Changez les r‚glages son en lan‡ant SETSOUND.BAT
+   Changez la langue en lan‡ant SETLANG.BAT
+
+_____________________________________________________________________________
+4. A propos de Saut … Ski
+
+   Une comp‚tition de Saut … Ski se fait en 2 sauts.Les sauts sont jug‚s
+   sur leur longueur et leur style.Le gagnant est celui qui obtient le
+   plus gros score total.
+
+   Le point critique (la ligne rouge) est cr‚dit‚ d'une valeur de 60 points
+   (120 points dans un concours de Vol … ski).Chaque mŠtre au del… du point
+   critique est cr‚dit‚ de 2.0 points pour un petit sommet, 1.8 points pour
+   un grand sommet et 1.2 points pour un sommet de vol … ski.
+
+   Il ya 5 juges qui notent le style du saut. Chaque juge attribue de
+   0 … 20 points. La plus haute ainsi que la plus basse des notes de style
+   sont ignor‚es. Les critŠres d'un bon saut sont: un d‚collage ‚quilibr‚, un
+   vol stable et un atterrissage t‚l‚mark excellent.
+
+   Dans un concours de saut … ski, les scores en Coupe du Monde sont donn‚s
+   comme suit:
+
+     1ere place 100 points        9eme place  29 points
+     2eme place  80 points       10eme place  26 points
+     3eme place  60 points       11eme place  24 points
+     4eme place  50 points       12eme place  22 points
+     5eme place  45 points       13eme place  20 points
+     6eme place  40 points       14eme place  18 points
+     7eme place  36 points       15eme place  16 points
+     8eme place  32 points       16eme place  15 points
+
+   En plus du concours individuel vous pouvez concourir par ‚quipe.
+   Chaque ‚quipe est compos‚e de 4 sauteurs dont les points sont additionn‚s.
+   Les rŠgles standard s'appliquent ‚galement au mode par ‚quipe.
+
+   Dans un concours de saut … ski par ‚quipe, l'‚quipe gagnante obtient
+   200 points en coupe du monde, la seconde 160 points, la troisiŠme
+   120 points et finalement la quatriŠme 100 points.
+
+_____________________________________________________________________________
+5. Comment sauter?
+
+   AprŠs que la lumiŠre verte se soit allum‚e, vous avez 15 secondes pour
+   vous lancer sur le tremplin de saut. La lumiŠre verte clignote aprŠs 5
+   secondes.Il vous reste donc 10 secondes.
+   Si vous d‚passez le temps allou‚ vous serez disqualifi‚.
+
+   L'indiquateur de vent montre la direction et la force du vent.
+   La vitesse est fournie en mŠtres par seconde. La vitesse optimale du vent
+   est usuellement un vent de front (1.5 - 3.5 m/s) mais diffŠre selon le
+   sommet ou le style de saut.
+
+   Quand vous jugez que les conditions sont correctes et que vous ˆtes prˆt
+   … glisser, cliquez sur le bouton gauche de la souris.
+
+   Au moment o— le sauteur atteint le bout de la piste d'envol, vous devez
+   effectuer un saut surpuissant. Pour cel…, cliquez … la fois sur le bouton
+   gauche et droit de la souris. relƒchez ensuite les boutons ensemble.
+
+   En l'air vous devez garder une bonne position et la maintenir. VOus pouvez
+   contr“ler l'angle du corps du sauteur en bougeant doucement la souris
+   en bas et en haut.
+   N'oubliez pas de profiter du vent!
+
+   Il existe 2 maniŠres d'atterrir: sur 2 skis ou en T‚l‚mark.
+   Employez l'atterrissage sur 2 skis lorsque vous avez vol‚ trop loin.
+   Le T‚l‚mark est plus difficile, par contre il vous fera gagner des points
+   de style.
+
+   Pour atterrir sur 2 skis cliquez sur les 2 boutons de la souris en mˆme
+   temps.
+
+   Si par contre vous voulez utiliser le T‚l‚mark, cliquez d'abord … droite
+   puis … gauche. Le d‚lai entre les 2 clics signifie un plus ou moins long
+   T‚l‚mark. Vous pouvez cliquer indiffŠrement d'abord sur l'un ou l'autre
+   des boutons. Gauche-droite ou Droite-gauche.
+
+   Deluxe Ski Jump garde les records pour chacun des 32 sommets.
+   Les records des sommets ne sont valides qu'en comp‚tition officielle
+   et seulement si vous restez sur vos skis … l'atterrissage.
+   Les sauteurs g‚r‚s par ordinateur ne peuvent pas obtenir de records.
+
+   Sur notre site Web  www.mediamond.fi  vous pourrez trouver les records
+   internationaux.
+
+_____________________________________________________________________________
+6. Enregistrement Deluxe Ski Jump
+
+   En enregistrant votre version de Deluxe Ski Jump vous recevrez votre cl‚
+   personnelle qui d‚verrouillera les options suivantes(brid‚es en mode D‚mo):
+
+       * 32 Sommets (K50 - K250)
+       * Support pour 16 players
+       * Mode comp‚tition par ‚quipe
+       * Support pour les records Web internationaux
+       * Mises … jour gratuites
+
+   Instructions d'enregistrement
+   1.  Imprimer ou copier sur papier le formulaire de commande (orderfra.txt).
+   2.  remplissez le clairement.
+
+   3A. Si vous payez en espŠces, joindre le rŠglement avec le bon de commande.
+   3B. Si vous effectuez un paiement banquaire, n'oubliez pas de joindre le
+       re‡u.
+       Le prix est de 50 FRF / 8 USD. Consultez le prix correspondant … votre
+       pays en consultant le fichier "Orderfra.txt".
+
+   4.  Envoyer votre bon et votre rŠglement …:
+         "DSJ"
+          Mediamond Tmi
+          Kaenkatu 4 B 20
+          04230 Kerava
+          Finlande
+
+   5.  AprŠs avoir re‡u votre cl‚ personnelle vous pourrez l'inscrire …
+       l'onglet "Enregistrer vous maintenant" du menu DSJ.
+
+   Veuillez compter de 1 … 10 jours pour recevoir votre cl‚ personnelle.
+   Pour toutes questions, priŠre de nous contacter …:
+   jussi.koskela@mediamond.fi
+
+
+_____________________________________________________________________________
+7. Auteurs et contact
+
+  Deluxe Ski Jump par     : Jussi Koskela
+  Photographie            : Kalevi Koskela
+  Traduction de l'anglais : Vittorio Bulfoni (bulfoni@libertsurf.fr)
+
+  E-mail   : jussi.koskela@mediamond.fi
+  Site Web : www.mediamond.fi
+
+  Mail     : Mediamond Tmi
+             Kaenkatu 4 B 20
+             04230 Kerava
+             Finlande

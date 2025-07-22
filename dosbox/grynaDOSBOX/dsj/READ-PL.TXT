@@ -1,0 +1,194 @@
+
+                        D E L U X E   S K I   J U M P
+
+                           (c) Jussi Koskela 2001
+
+
+Zawartoœæ
+   1. Informacje o Deluxe Ski Jump
+   2. Wymagania systemowe
+   3. Uruchamianie gry
+   4. Informacje o skokach narciarskich
+   5. Jak skakaæ ?
+   6. Rejestracja DSJ
+   7. Autorzy gry
+
+
+U¿ywasz tego oprogramowania na swe w³asne ryzyko. Twórca programu nie
+odpowiada za ewentualne szkody wyrz¹dzone przez Deluxe Ski Jump.
+
+_____________________________________________________________________________
+1. Informacje o Deluxe Ski Jump
+
+   Deluxe Ski Jump to nowej generacji symulacja skoków narciarskich w 
+   trójwymiarowej grafice. Dziêki dok³adnie odwzorowanym prawom fizyki, 
+   realizm DSJ jest jednym z najlepszych jakie stworzono w grach sportowych.
+
+   Dobrze zaprojektowana obs³uga myszy daje ci pe³n¹ kontrolê nad animowanym
+   w czasie rzeczywistym skoczkiem. Mo¿esz balansowaæ podczas wybicia,
+   zmieniaæ nachylenie cia³a podczas lotu, korzystaæ z wiatru i w koñcu
+   perfekcyjnie wyl¹dowaæ, by usatysfakcjonowaæ sêdziów.
+
+   Skocznie s¹ urozmaicone. Od malutkiej skoczni K50, a¿ do ogromnej K250.
+   Ka¿da z 32 skoczni daje ci unikalne doœwiadczenia.
+
+   Mo¿esz tak¿e wyzwaæ swych przyjació³ na pojedynek i organizowaæ wielkie
+   turnieje, gdy¿ DSJ mo¿e obs³ugiwaæ do 16 zawodników jednoczeœnie. Pe³ny
+   puchar œwiata na 32 skoczniach, z udzia³em 16 zawodników daje ekstremaln¹
+   zabawê i wra¿enia!
+
+   Mi³ej zabawy!
+
+_____________________________________________________________________________
+2. Wymagania systemowe
+
+   Wymagana konfiguracja:
+      * Pentium 166 lub szybszy
+      * Mysz z dwoma przyciskami
+      * Karta graficzna kompatybilna z trybem VGA
+      * 470 kb wolnej pamiêci
+      * Dos 4.0 lub nowszy
+
+   Opcjonalnie:
+      * Karta dŸwiêkowa kompatybilna z Sound Blaster
+      * Windows 95 lub nowszy
+
+_____________________________________________________________________________
+3. Uruchamianie gry
+
+   Aby zagraæ w Deluxe Ski Jump uruchom plik DSJ.EXE
+
+   Ustawienia dŸwiêku mo¿esz zmieniæ uruchamiaj¹c plik SETSOUND.BAT
+   Mo¿esz tak¿e zmieniæ jêzyk programu uruchamiaj¹c plik SETLANG.BAT
+
+_____________________________________________________________________________
+4. Informacje o skokach narciarskich
+
+   Konkurs skoków narciarskich sk³ada siê z dwóch skoków. Skoki te s¹
+   oceniane pod wzglêdem stylu i odleg³oœci. Zwyciêzc¹ zostaje zawodnik,
+   który uzyska najwiêksz¹ sumê punktów.
+
+   Punkt krytyczny (czerwona linia) daje 60 punktów (120 punktów na 
+   najwiêkszych skoczniach). Ka¿dy metr powy¿ej punktu krytycznego daje:
+   2.0 pkt na ma³ej skoczni, 1.8 pkt na du¿ej skoczni oraz 1.2 pkt na
+   skoczniach przeznaczonych do lotów narciarskich.
+
+   Piêciu sêdziów ocenia skok pod wzglêdem stylu. Ka¿dy sêdzia mo¿e przyznaæ
+   0 - 20 punktów. Najwy¿sza i najni¿sza nota zostaj¹ odrzucone.
+   Charakterystyczne cechy skoku w dobrym stylu: dobrze wywa¿one wybicie,
+   stabilny lot i dobre l¹dowanie telemarkiem.
+
+   Podczas zawodów pucharu œwiata punkty s¹ przyznawane nastêpuj¹co:
+
+     1.miejsce 100 pkt           9.miejsce  29 pkt
+     2.miejsce  80 pkt          10.miejsce  26 pkt   
+     3.miejsce  60 pkt          11.miejsce  24 pkt
+     4.miejsce  50 pkt          12.miejsce  22 pkt
+     5.miejsce  45 pkt          13.miejsce  20 pkt
+     6.miejsce  40 pkt          14.miejsce  18 pkt
+     7.miejsce  36 pkt          15.miejsce  16 pkt
+     8.miejsce  32 pkt          16.miejsce  15 pkt
+
+   Oprócz indywidualnych zawodów, tak¿e dru¿yny mog¹ rywalizowaæ w skokach
+   narciarskich. Ka¿da dru¿yna sk³ada siê z czterech skoczków, których punkty
+   s¹ sumowane. W konkursach dru¿ynowych obowi¹zuj¹ standartowe zasady.
+
+   W pucharze dru¿ynowym zwyciêzcy otrzymuj¹ 200 punktów do pucharu, druga
+   dru¿yna 160 punktów, trzecia 120 punktów, a czwarta 100 punktów.
+
+_____________________________________________________________________________
+5. Jak skakaæ ?
+
+   Od momentu, w którym zapali siê zielone œwiat³o masz dok³adnie 15 sekund
+   na rozpoczêcie skoku. Kiedy zielone œwiat³o zaczyna migaæ, oznacza to, i¿
+   pozosta³o ci jeszcze 10 sekund. Je¿eli przekroczysz dopuszczalny limit 
+   czasu, twój skok bêdzie niewa¿ny.
+
+   WskaŸnik wiatru sygnalizuje ci obecny kierunek i si³ê wiatru.
+   Prêdkoœæ jest podawana w metrach na sekundê. Optymalne warunki to
+   wiatr z przodu (1.5 - 3.5 m/s), lecz zmieniaj¹ siê nieco, w zale¿noœci od 
+   skoczni i stylu skakania.
+
+   Kiedy s¹dzisz, ¿e wiatr jest odpowiedni i jesteœ gotowy do skoku, kliknij
+   lewy przycisk myszy.
+
+   Gdy skoczek zbli¿a siê do koñca rozbiegu nale¿y wykonaæ skok.
+   Aby to uczyniæ, nale¿y wcisn¹æ jednoczeœnie prawy i lewy przycisk myszy.
+   Po wybiciu przyciski nale¿y puœciæ.
+
+   W powietrzu musisz siê postaraæ o dobr¹ pozycjê do lotu i utrzymaæ j¹.
+   Poruszaj¹c delikatnie mysz¹ w dó³ i w górê mo¿esz kontrolowaæ nachylenie
+   cia³a skoczka.
+   Korzystaj z wiatru!
+
+   Istniej¹ dwa sposoby l¹dowania: na dwie nogi oraz telemark.
+   Na dwie nogi l¹duj wówczas, gdy lecisz bardzo daleko. L¹dowanie
+   telemarkiem jest trudniejsze, lecz dziêki niemu uzyskasz wiêcej punktów
+   za styl.
+
+   Jeœli chcesz wykonaæ l¹dowanie na dwie nogi, wystarczy wcisn¹æ lewy i
+   prawy przycisk myszy jednoczeœnie.
+
+   Je¿eli natomiast chcesz wykonaæ telemark, musisz klikn¹æ najpierw prawy,
+   a po chwili lewy przycisk. Im d³u¿sza przerwa miêdzy poszczególnymi
+   klikniêciami, tym szerszy telemark. Mo¿esz tak¿e klikaæ przyciski w
+   odwrotnej kolejnoœci.
+
+   Deluxe Ski Jump zapamiêtuje rekordy wszystkich 32 skoczni.
+   Uwzglêdniane s¹ tylko rekordy, które uzyskano podczas oficjalnych zawodów.
+   Aby rekord by³ wa¿ny, zawodnik nie mo¿e siê przewróciæ. Rekordy uzyskane
+   przez zawodników sterowanych przez komputer nie s¹ brane pod uwagê.
+
+   Na stronie www.mediamond.fi znajdziesz miêdzynarodowe rekordy.
+
+_____________________________________________________________________________
+6. Rejestracja Deluxe Ski Jump
+
+   Rejestruj¹c Deluxe Ski Jump, otrzymasz w³asny klucz rejestracyjny, który
+   odblokowuje nastêpuj¹ce opcje:
+
+       * 32 skocznie (K50 - K250)
+       * Multiplayer na 16 osób
+       * Opcja pucharu dru¿ynowego
+       * Obs³uga rekordów w internecie
+       * Darmowe uaktualnienia
+
+   Rejestrowanie
+   1.  Wydrukuj lub skopiuj formularz z pliku orderpl.txt na papier.
+   2.  Czytelnie wype³nij formularz.
+
+   3A. Jeœli chcesz p³aciæ gotówk¹, wyœlij j¹ wraz z formularzem.
+   3B. Je¿eli wybierasz przelew na konto, wyœlij wraz z formularzem
+       pokwitowanie przelewu.
+       Cena wynosi 30 PLN / 8 USD. SprawdŸ cenê w twoim kraju i dodatkowe
+       informacje w pliku orderpl.txt.
+
+   4.  Op³atê wyœlij pod adres:
+         "DSJ"
+          Mediamond Tmi
+          Kaenkatu 4 B 20
+          04230 Kerava
+          Finland
+
+   5.  Po otrzymaniu swego klucza rejestracyjnego wpisz go wraz z swym
+       nazwiskiem w odpowiednim miejscu w grze.
+
+   Proszê odczekaæ 1-10 dni na dostarczenie klucza rejestracyjnego.
+   Jeœli masz jakieœ pytania skontaktuj siê z nami:
+   jussi.koskela@mediamond.fi
+
+
+_____________________________________________________________________________
+7. Autorzy gry
+
+  Deluxe Ski Jump wykona³ : Jussi Koskela
+  Zdjêcia                 : Kalevi Koskela
+  Polskie T³umaczenie     : Piotr "V-car" Wikarek (v_car@interia.pl)
+
+  E-mail : jussi.koskela@mediamond.fi
+  Strona : www.mediamond.fi
+
+  Adres  : Mediamond Tmi
+           Kaenkatu 4 B 20
+           04230 Kerava
+           Finland

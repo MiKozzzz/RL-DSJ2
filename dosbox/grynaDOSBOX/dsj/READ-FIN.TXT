@@ -1,0 +1,189 @@
+
+                        D E L U X E   S K I   J U M P
+
+                           (c) Jussi Koskela 2001
+
+
+Sisältö
+   1. Tietoa pelistä
+   2. Laitevaatimukset
+   3. Pelin käynnistäminen
+   4. Tietoa mäkihypystä
+   5. Hyppäämisohjeet
+   6. Pelin rekisteröinti
+   7. Tekijät ja yhteystiedot
+
+
+Tämän ohjelmiston käyttö tapahtuu omalla vastuullasi. Tekijällä ei ole mitään
+vastuuta Deluxe Ski Jump -pelin mahdollisesti aiheuttamista vahingoista.
+
+_____________________________________________________________________________
+1. Tietoa pelistä
+
+   Deluxe Ski Jump on uuden sukupolven 3d mäkihyppypeli. Tarkasti
+   mallinnetut fysiikan lait tekevät pelin realismista yhden parhaista,
+   joita urheilupeleissä on koskaan nähty.
+
+   DSJ:n hyvin suunnitellun hiiriohjauksen ansiosta saat täydelliseen
+   hallintaasi reaaliaikaisesti animoidun mäkihyppääjän. Voit vaikuttaa
+   ponnistuksen tasapainoisuuteen, säätää hyppääjän asentoa ilmalennon aikana,
+   hyödyntää ilmavirtauksia ja tehdä lopuksi kauniin alastulon miellyttääksesi
+   tuomaristoa.
+
+   Mäet vaihtelevat pienestä K50 mäestä aina valtavaan K250 lentomäkeen.
+   Kaikki 32 mäkeä tarjoavat sinulle yksilöllisen hyppyelämyksen.
+
+   Voit myös haastaa kaikki ystäväsi peliin ja järjestää laajojaa turnauksia,
+   koska kilpailuun voi osallistua yhteensä 16 pelaaja. Kokonainen 32 mäen
+   maailmancup 16 pelaajalla on todella hauska ja jännittävä tapahtuma.
+
+   Nauti pelistä!
+
+
+_____________________________________________________________________________
+2. Laitevaatimukset
+
+   Vaadittava laitekokoonpano
+      * Pentium 166 tai nopeampi
+      * 2-nappinen hiiri
+      * VGA yhteensopiva näytönohjain
+      * 470 kt vapaata perusmuistia
+      * Dos 4.0 tai uudempi
+
+   Peli tukee myös
+      * Sound Blaster tai yhteensopiva
+      * Windows 95 tai uudempi
+
+_____________________________________________________________________________
+3. Pelin käynnistäminen
+
+   Pelataksesi Deluxe Ski Jumpia suorita DSJ.EXE
+
+   Ääniasetuksia vaihtaaksesi suorita SETSOUND.BAT
+   Vaihtaaksesi kieltä suorita SETLANG.BAT
+
+_____________________________________________________________________________
+4. Tietoa mäkihypystä
+
+   Mäkihyppykilpailu koostuu kahdesta hypystä. Hypyt arvostellaan sekä
+   pituus- että tyylipisteiden mukaan. Mäkihyppääjien paremmuuden
+   ratkaisee kahden hypyn yhteenlaskettu pistemäärä.
+
+   Kriittisen pisteen (punainen viiva) arvo on 60 pistettä (lentomäessä
+   120 pistettä). Jokaiselta K-pisteen ylittävältä metriltä mäkihyppääjä
+   saa pienessä mäessä 2.0 pistettä, isossa mäessä 1.8 pistettä ja
+   lentomäessä 1.2 pistettä.
+
+   Tyyliä on arvostelemassa viisi hyppytuomaria, joista kukin antaa
+   0 - 20 pistettä. Parasta ja huonointa pistemäärää ei huomioida.
+   Ominaista hyvälle tyylille ovat: tasapainoinen ponnistus, vakaa ilmalento
+   ja hallittu telemark-alastulo.
+
+   Mäkihyppykilpailussa jaetaan maailmancup-pisteitä seuraavasti:
+
+     1. sija 100 pistettä        9. sija 29 pistettä
+     2. sija  80 pistettä       10. sija 26 pistettä
+     3. sija  60 pistettä       11. sija 24 pistettä
+     4. sija  50 pistettä       12. sija 22 pistettä
+     5. sija  45 pistettä       13. sija 20 pistettä
+     6. sija  40 pistettä       14. sija 18 pistettä
+     7. sija  36 pistettä       15. sija 16 pistettä
+     8. sija  32 pistettä       16. sija 15 pistettä
+
+
+   Maailmancupin voittaa mäkihyppykaudella eniten cup-pisteitä kerännyt
+   kilpailija.
+
+   Yksilökilpailun lisäksi voidaan kilpailla myös joukkuemäessä.
+   Joukkueisiin kuuluu neljä mäkihyppääjää, joiden pistemäärät lasketaan
+   yhteen. Joukkuekilpailussa muut säännöt ovat samat kuin yksilökilpailussa.
+
+   Joukkuekilpailussa voittanut joukkue saa 200 cup-pistettä, toinen 160,
+   kolmas 120 ja neljäs 100 pistettä.
+   Joukkue-cupin voittaa eniten cup-pisteitä kerännyt joukkue.
+
+_____________________________________________________________________________
+5. Hyppäysohjeet
+
+   Kun vihreä valo sammuu, sinulla on tasan 15 sekuntia aikaa aloittaa
+   hyppysi. Aikaa on jäljellä kymmenen sekuntia, kun vihreä valo alkaa
+   vilkkumaan. Jos ylität aikarajan, hyppysi hylätään.
+
+   Tuulimittari osoittaa tuulen suunnan ja voimakkuuden (m/s). Paras
+   tuuliolosuhde on yleensä 1.5 - 3.5 m/s vastatuuli, mutta edullisin arvo
+   vaihtelee hieman riippuen sekä mäestä että hyppytyylistä.
+
+   Kun olosuhteet ovat mielestäsi hyvät ja kun olet valmis aloittamaan
+   mäenlaskun, paina vasenta hiiren nappia.
+
+   Mäkihyppääjän päästyä hyppyripöydälle tee voimakas ponnistus painamalla
+   yhdenaikaisesti hiiren vasenta ja oikeaa nappia. Päästä irti napeista,
+   kun olet ponnistanut.
+
+   Ilmassa sinun täytyy ottaa hyvä lentoasento ja säilyttää se. Voit
+   säätää kehosi asentoa liikuttamalla hiirtä varovaisesti ylös ja alas.
+   Muista myös käyttää ilmavirtauksia hyväksesi.
+
+   Alastulon voit tehdä kahdella tavalla: tasajalkaa tai telamark-tyylillä.
+   Käytä tasajalka-alastuloa, jos hyppysi on hyvin pitkä. Telemark-alastulo
+   on vaikeampi, mutta siitä on mahdollisuus saada paremmat pisteet.
+
+   Jos haluat laskeutua tasajalkaa, paina hiiren vasenta ja oikeaa nappia
+   yhtä aikaa.
+
+   Jos taas haluat tehdä telemark-alastulon, paina ensin oikeaa nappia ja
+   hetken päästä vasenta nappia. Mitä pidempi aika painallusten välillä
+   on sitä leveämpi telemark-asennosta tulee. Voit painaa hiiren nappeja
+   myös vastakkaisessa järjestyksessä.
+
+
+
+   Deluxe Ski Jump pitää kirjaa kaikkien 32 mäen mäkiennätyksistä.
+   Harjoituksissa tehtyjä tai kaaduttuja hyppyjä ei hyväksytä mäki-
+   ennätyksiksi. Ennätykset eivät voi myöskään olla tietokonehyppääjien
+   nimissä.
+
+   Kotisivullamme osoitteessa www.mediamond.fi löydät kansainväliset
+   tilastot mäkiennätyksistä.
+
+_____________________________________________________________________________
+6. Pelin rekisteröinti
+
+   Rekisteröimällä Deluxe Ski Jumpin saat henkilökohtaisen rekisteröinti-
+   avaimen, jolla voit avata ilmaisen demoversion lukitut ominaisuudet:
+
+       * 32 mäkeä (K50 - K250)
+       * Moninpeli mahdollisuus (max. 16 pelaajaa!)
+       * Joukkuemäki -kilpailutyyppi
+       * Tuki nettiennätyksille
+       * Ilmaiset päivitykset
+
+   Näin rekisteröit pelin:
+   1.  Tulosta tai kopio tilauslomake (orderfin.txt) paperille.
+   2.  Täytä tilauslomake siististi.
+
+   3A. Jos haluat maksaa käteisenä liitä tilauksen mukaan käteismaksu 40mk.
+   3B. Jos maksat tilisiirtona liitä tilauksen mukaan tosite maksusta (40mk).
+       Tilitiedot löytyvät orderfin.txt -tiedostosta.
+
+   4.  Lähetä tilaus maksuineen osoitteeseen:
+          "DSJ", Mediamond Tmi, Käenkatu 4 B 20, 04230 Kerava
+   5.  Kun saat rekisteröintiavaimen, syötä se demoversioon
+       valikossa "DSJ:n rekisteröinti / Avaa rekisteröity versio"
+
+   Rekisteröintiavaimen toimitusaika on 1-5 päivää.
+   Jos sinulla on kysyttävää rekisteröinnistä ota yhteyttä sähköpostitse:
+   jussi.koskela@mediamond.fi
+
+_____________________________________________________________________________
+7. Tekijät ja yhteystiedot
+
+   Deluxe Ski Jump : Jussi Koskela
+   Valokuvat       : Kalevi Koskela
+
+   E-mail  : jussi.koskela@mediamond.fi
+   Websivu : www.mediamond.fi
+
+   Osoite  : Mediamond Tmi
+             Käenkatu 4 B 20
+             04230 Kerava
