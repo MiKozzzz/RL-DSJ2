@@ -19,7 +19,8 @@ The goal is to train an autonomous jumper capable of performing full ski jumps (
 - **Algorithm:** PPO (Proximal Policy Optimization) from `stable-baselines3`, with `CnnPolicy`.
 - **Observation:** Only the filtered image of the jumper (for simplicity).
 - **Reward strategy:**
-  - Points awarded for proper take-off, flight stability, and landing.
+  - Points are awarded for each decision made during the jump (e.g., taking off, maintaining position).
+    The longer the jump lasts, the more decisions are made, resulting in a higher total reward.
   - Additional reward extracted from the game score using OCR with a custom CNN digit recognizer.
   - Penalties for failing to jump or land properly.
 - Training was done over multiple sessions (40k steps and fine-tuning with 10k steps).
