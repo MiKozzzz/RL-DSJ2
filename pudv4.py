@@ -2,18 +2,12 @@ import time
 import win32api
 import win32con
 from mss import mss
-from tensorflow.keras.models import load_model
 import pyautogui
 import gymnasium as gym
 from gymnasium import spaces
 import numpy as np
 import cv2
-import os
-from stable_baselines3.common.callbacks import BaseCallback
-from stable_baselines3.common import env_checker
-from matplotlib import pyplot as plt
 from stable_baselines3 import DQN, PPO
-# asd
 
 class WindEnv(gym.Env):
     def __init__(self):
@@ -89,6 +83,7 @@ class WindEnv(gym.Env):
             print("koniec")
             # Czekanie aż pojawi się wynik za skok
             stop = True
+            # TODO: zmienić to w funkcję podobną do check condition
             while stop:
                 score = np.array(self.cap.grab(self.done_score_observation))[:, :, :3]
                 gray_img = cv2.cvtColor(score, cv2.COLOR_BGR2GRAY)
@@ -134,7 +129,7 @@ class WindEnv(gym.Env):
         info = {}
         return new_observation, reward, terminated, truncated, info
 
-    def reset(self, seed=None):
+    def reset(self, *, seed=None, options=None):
         # Resetujemy stan środowiska
         time.sleep(1)
         self.state = 0
@@ -146,6 +141,7 @@ class WindEnv(gym.Env):
         self.click()
         time.sleep(1)
         # Czekanie aż załaduje się gra
+        # TODO: zmiana tej funkcji na jak check condition
         stop = True
         while stop:
             img = np.array(self.cap.grab(self.wind_direction_observation))[:, :, :3]
@@ -182,9 +178,9 @@ class WindEnv(gym.Env):
     def _click_mouse(self):
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
         win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN, 0, 0)
-        pyautogui.move(0, 30)
+        # pyautogui.move(0, 30)
         time.sleep(0.10)
-        pyautogui.move(0, -30)
+        # pyautogui.move(0, -30)
         time.sleep(0.15)
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
         win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP, 0, 0)
@@ -195,63 +191,13 @@ class WindEnv(gym.Env):
         time.sleep(0.1)
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
 
-    def _check_done_condition(self):
-        # Czytanie obrazu, czy pojawiła się odległość skoku lub napis dyskfalifikacja
-        score = np.array(self.cap.grab(self.done_observation))[:, :, :3]
-        gray_img = cv2.cvtColor(score, cv2.COLOR_BGR2GRAY)
-        _, binary_image = cv2.threshold(gray_img, 130, 255, cv2.THRESH_BINARY)
-        # Suma pixeli większa od 0 oznacza, że pojawił się napis (długość skoku lub napis dyskwalifikacji
-        done = False
-        if np.sum(binary_image) > 0:
-            done = True
-        return done
-
-    def Powiekszanie_macierzy(self, original_matrix, target_rows, target_cols):
-        # Oblicza różnicę w liczbie wierszy i kolumn
-        diff_rows = target_rows - original_matrix.shape[0]
-        diff_cols = target_cols - original_matrix.shape[1]
-
-        # Oblicza liczbę wierszy i kolumn, które zostaną dodane na górze, na dole, z lewej i z prawej strony
-        top_rows = diff_rows // 2
-        left_cols = diff_cols // 2
-        # Stwarza nową macierz o docelowym rozmiarze, wypełnioną zerami
-        new_matrix = np.zeros((target_rows, target_cols))
-        # Umieszcza pierwotną macierz na odpowiednim miejscu w nowej macierzy
-        new_matrix[top_rows:top_rows + original_matrix.shape[0],
-        left_cols:left_cols + original_matrix.shape[1]] = original_matrix
-
-        return new_matrix
-
-    def Segmentacjaliczb(self, image):
-        # Znajdowanie konturów na obrazie
-        contours, _ = cv2.findContours(image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        digits = []
-
-        # Iteracja po konturach
-        for contour in contours:
-            x, y, w, h = cv2.boundingRect(contour)
-            digit = image[y:y + h, x:x + w]
-            # Dodawanie wyciętej cyfry i jej pozycji x do listy
-            digits.append((digit, x))
-
-        # Sortowanie cyfr według pozycji x
-        sorted_digits = sorted(digits, key=lambda item: item[1])
-        # Zwracanie tylko wyciętych cyfr, bez pozycji x
-        return [digit for digit, x in sorted_digits]
-
-    def wynik(self, asd):
-        wynik = 0
-        lenght = len(asd)
-        if asd[0] == 10:
-            for i in range(1, lenght - 2):
-                wynik += asd[i] * 10 ** (lenght - i - 3)
-            wynik += asd[-1] / 10
-            wynik = wynik * -1
-        else:
-            for i in range(lenght - 2):
-                wynik += asd[i] * 10 ** (lenght - i - 3)
-            wynik += asd[-1] / 10
-        return wynik
+    # TODO: zmienić dane wejściowe bo najpewniej słownik obrazu będzie po prostu w self.
+    def _check_done_condition(self, name, dictonary):
+        frame = np.array(mss().grab(dictonary[name]))
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        print(gray)
+        # wykrycie jasno-litery > prog
+        return bool(np.any(gray > 130))
 
     def rozpoznawanie_wiatru(self, img):
         # Konwersja do skali szarości
@@ -262,27 +208,6 @@ class WindEnv(gym.Env):
         predicted_classes = np.argmax(classifications, axis=1)
         return predicted_classes[0]
 
-    def rozpoznawanie_cyfr(self, img):
-        gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        _, binary_image = cv2.threshold(gray_img, 130, 255, cv2.THRESH_BINARY)
-        segments = self.Segmentacjaliczb(binary_image)
-        # Nowy rozmiar macierzy
-        image_width = 16
-        image_height = 20
-        lista_liczb = np.zeros((len(segments), 20, 16))
-        # Zwiększenie macierzy
-        for i in range(len(segments)):
-            increased_matrix = self.Powiekszanie_macierzy(segments[i] / 255, image_height, image_width)
-            lista_liczb[i] = lista_liczb[i] + increased_matrix
-
-        # Jeżeli brak elementów to wynik -168.0, ponieważ widzocznie była to dyskwalifikacja
-        if len(lista_liczb) == 0:
-            return -168.0
-        # Rozpoznawanie liczb
-        else:
-            classifications = model_cyfr.predict(lista_liczb)
-            predicted_classes = np.argmax(classifications, axis=1)
-            return self.wynik(predicted_classes)
 
     def odczyt_zawodnika(self, img):
         # Konwersja do skali szarości
@@ -342,6 +267,9 @@ env = WindEnv()
 # model.learn(total_timesteps=10000)
 # model.save("ppo_DSJ")
 #
+
+# model = PPO("MultiInputPolicy", env, verbose=1, device="cuda")
+
 model = PPO.load("ppo_DSJ6_10", env=env)
 
 obs, info = env.reset()

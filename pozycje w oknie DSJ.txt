@@ -1,0 +1,5 @@
+DSJ 640x400
+Puchar świata: 160x160
+Trening: 160x210
+Skocznie:
+	Australia 440x310

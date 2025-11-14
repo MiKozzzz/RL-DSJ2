@@ -1,106 +1,78 @@
-import tensorflow as tf
-import cv2
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from torchvision import transforms
+from PIL import Image
 import os
-import numpy as np
+from torch.utils.data import TensorDataset, DataLoader
 
+# Architektura modelu
+class SimpleCNN(nn.Module):
+    def __init__(self, num_classes=11):  # 0-9 + kropka
+        super(SimpleCNN, self).__init__()
+        self.conv1 = nn.Conv2d(1, 16, 3, padding=1)
+        self.conv2 = nn.Conv2d(16, 32, 3, padding=1)
+        self.fc1 = nn.Linear(32*7*7, 64)
+        self.fc2 = nn.Linear(64, num_classes)
 
-# Ścieżka do folderu z obrazami
-folder_path = "C:/RL_DSJ2/cyfry"
+    def forward(self, x):
+        x = F.relu(F.max_pool2d(self.conv1(x), 2))  # 28->14
+        x = F.relu(F.max_pool2d(self.conv2(x), 2))  # 14->7
+        x = x.reshape(-1, 32*7*7)
+        x = F.relu(self.fc1(x))
+        x = self.fc2(x)
+        return x
 
-# Rozmiar obrazów
-image_width = 16
-image_height = 20
+# Wczytanie obrazów i etykiet
+def load_images(folder):
+    X = []
+    y = []
+    for file in os.listdir(folder):
+        if not file.endswith(".jpg"):
+            continue
+        label = int(os.path.splitext(file)[0])
+        img = Image.open(os.path.join(folder, file))
+        img = transform(img)
+        X.append(img)
+        y.append(label)
+    return torch.stack(X), torch.tensor(y)
 
-# Listy do przechowywania danych i etykiet
-images = []
-labels = []
+# Augmentacja ręczna: np. przesunięcia, skalowanie
+def augment(img):
+    # img: tensor 1x28x28
+    return img  # na razie brak transformacji, można dodać np. small rotation/shift
 
-# Iterowanie po plikach w folderze
-for filename in os.listdir(folder_path):
-    if filename.endswith(".png"):  # Możesz dostosować rozszerzenie plików
-        image_path = os.path.join(folder_path, filename)
+if __name__ == "__main__":
+    # Transformacje: konwersja do tensor i normalizacja
+    transform = transforms.Compose([
+        transforms.Grayscale(num_output_channels=1),
+        transforms.ToTensor(),  # [0,1]
+    ])
 
-        img = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
-        # Sprawdzenie, czy obraz został poprawnie wczytany
-        if img is not None:
-            # Skalowanie obrazu
-            img = cv2.resize(img, (image_width, image_height))
+    model = SimpleCNN()
 
-            # Normalizacja obrazu
-            img = img / 255.0
+    X, y = load_images("cyfyry")
+    print(X.shape, y.shape)
 
-            # Dodanie obrazu do listy
-            images.append(img)
+    X_aug = torch.stack([augment(x) for x in X])
+    y_aug = y
 
-            # Wyciągnięcie etykiety z nazwy pliku (zakładając, że nazwa pliku zaczyna się od cyfry reprezentującej etykietę)
-            # label = os.path.splitext(filename)[0]
-            base_filename = os.path.splitext(filename)[0]  # Usunięcie rozszerzenia pliku
-            label = base_filename.split('_')[0]  # Zakładając, że etykieta jest przed pierwszym znakiem podkreślenia
+    dataset = TensorDataset(X_aug, y_aug)
+    loader = DataLoader(dataset, batch_size=2, shuffle=True)
 
-            if label is not None:
-                labels.append(int(label))
-            else:
-                print(f"Etykieta dla pliku {filename} nie jest zdefiniowana.")
-        else:
-            print(f"Nie udało się wczytać obrazu: {filename}")
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
+    criterion = nn.CrossEntropyLoss()
 
+    # Proste trenowanie 50 epok
+    for epoch in range(50):
+        for xb, yb in loader:
+            optimizer.zero_grad()
+            out = model(xb)
+            loss = criterion(out, yb)
+            loss.backward()
+            optimizer.step()
 
-
-# Konwersja list do tablic NumPy
-print(len(images))
-print(len(images[0]))
-print(len(images[0][0]))
-
-images = np.array(images)  # Dodanie wymiaru kanału
-labels = np.array(labels)
-
-print(images.shape)
-print(labels)
-
-# for i in range(11):
-#     plt.imshow(images[i]*255, cmap='gray')
-#     plt.title("Wyświetlony obraz")
-#     plt.axis('off')  # Wyłączenie osi
-#     plt.show()
-#
-
-
-# model = tf.keras.models.Sequential([tf.keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(20, 16, 1)),
-#                                     tf.keras.layers.MaxPooling2D(2, 2),
-#                                     tf.keras.layers.Conv2D(64, (3,3), activation='relu'),
-#                                     tf.keras.layers.MaxPooling2D(2, 2),
-#                                     tf.keras.layers.Flatten(),
-#                                     #The same 128 dense layers, and 10 output layers as in the pre-convolution example:
-#                                     tf.keras.layers.Dense(128, activation='relu'),
-#                                     tf.keras.layers.Dense(11, activation='softmax')
-#                                     ])
-
-
-model = tf.keras.models.Sequential([tf.keras.layers.Flatten(),
-                                    tf.keras.layers.Dense(256, activation='relu'),
-                                    tf.keras.layers.Dense(128, activation='relu'),
-                                    tf.keras.layers.Dense(11, activation='softmax')])
-
-
-model.compile(optimizer='adam',
-              loss='sparse_categorical_crossentropy',
-              metrics=['accuracy'])
-
-
-model.fit(images, labels, epochs=100)
-
-
-
-classifications = model.predict(images)
-
-predicted_classes = np.argmax(classifications, axis=1)
-
-print(classifications)
-print(labels)
-print(predicted_classes)
-
-
-model.save('model_cyfry.keras')
+    torch.save(model.state_dict(), "model_cyfr_weights.pth")
 
 
 
