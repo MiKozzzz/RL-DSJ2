@@ -8,6 +8,10 @@ import win32api
 import win32con
 import win32gui
 
+import Rozpoznawanie_Wiatru
+from Rozpoznawanie_Wiatru import RozpoznawanieWiatru
+from Rozpoznawanie_Liczb import RozpoznawanieLiczb
+
 def sprawdzanie_obrazu(name, dictonary):
     time.sleep(1)
     img = mss().grab(dictonary[name])
@@ -18,14 +22,13 @@ def sprawdzanie_obrazu(name, dictonary):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
-    # zapis do pliku JPG
-    # cv2.imwrite(f"{name}.jpg", frame)
+    # # zapis do pliku JPG
+    # cv2.imwrite(f"{name}.png", frame)
 
 
 def _check_done_condition(name, dictonary):
     frame = np.array(mss().grab(dictonary[name]))
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    print(gray)
     # wykrycie jasno-litery > prog
     return bool(np.any(gray > 130))
 
@@ -86,7 +89,7 @@ win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
 time.sleep(0.1)
 win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
 
-time.sleep(2)
+time.sleep(1)
 
 move_to_x = 440
 move_to_y = 310
@@ -107,17 +110,42 @@ win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
 time.sleep(0.1)
 win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
 
-time.sleep(5)
+time.sleep(2)
 
 dict_windows = {}
 
 dict_windows["jumper_observation"] = {"top": center_y - 100, "left": center_x - 100, "width": 200, "height": 200}
 dict_windows["wind_direction_observation"] = {"top": center_y - 178, "left": center_x + 260, "width": 45, "height": 29}
-dict_windows["wind_speed_observation"] = {"top": center_y - 150, "left": center_x + 265, "width": 40, "height": 17}
+dict_windows["wind_speed_observation"] = {"top": center_y - 150, "left": center_x + 264, "width": 40, "height": 17}
 dict_windows["jump_length_observation"] = {"top": center_y + 190, "left": center_x - 25, "width": 65, "height": 20}
 dict_windows["score_observation"] = {"top": center_y + 190, "left": center_x + 160, "width": 110, "height": 20}
 
-print(_check_done_condition("jump_length_observation", dict_windows))
+
+while not _check_done_condition("jump_length_observation", dict_windows):
+    img = np.array(mss().grab(dict_windows["wind_direction_observation"]))
+    print("Kierunek Wiatru: ", RozpoznawanieWiatru().rozpoznawanie_wiatru(img))
+
+    img_speed = np.array(mss().grab(dict_windows["wind_speed_observation"]))
+    print("Siła wiatru: ", RozpoznawanieLiczb().rozpoznawanie_cyfr(img_speed))
+    time.sleep(2)
+
+
+# zapis do pliku JPG
+cv2.imwrite(f"probka.png", img_speed)
+
+img = np.array(mss().grab(dict_windows["jump_length_observation"]))
+print("Długość skoku: ", RozpoznawanieLiczb().rozpoznawanie_cyfr(img))
+
+# zapis do pliku JPG
+cv2.imwrite(f"probka2.png", img)
+
+time.sleep(3)
+
+img = np.array(mss().grab(dict_windows["score_observation"]))
+print("Wynik skoku: ", RozpoznawanieLiczb().rozpoznawanie_cyfr(img))
+
+# zapis do pliku JPG
+cv2.imwrite(f"probka3.png", img)
 
 # sprawdzanie_obrazu("jumper_observation", dict_windows)
 # sprawdzanie_obrazu("wind_direction_observation", dict_windows)
@@ -125,6 +153,7 @@ print(_check_done_condition("jump_length_observation", dict_windows))
 # sprawdzanie_obrazu("jump_length_observation", dict_windows)
 # sprawdzanie_obrazu("score_observation", dict_windows)
 
+time.sleep(3)
 
 win32gui.PostMessage(hwnd, win32con.WM_CLOSE, 0, 0)
 

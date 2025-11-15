@@ -3,3 +3,13 @@ Puchar świata: 160x160
 Trening: 160x210
 Skocznie:
 	Australia 440x310
+
+
+
+
+Rozponawanie liczb:
+Filtr
+segementacja
+resize 28x28
+predict
+czytanie liczby z cyfr

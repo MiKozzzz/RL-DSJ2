@@ -5,11 +5,12 @@ from torchvision import transforms
 from PIL import Image
 import os
 from torch.utils.data import TensorDataset, DataLoader
+import cv2
 
 # Architektura modelu
-class SimpleCNN_Number(nn.Module):
-    def __init__(self, num_classes=11):  # 0-9 + kropka
-        super(SimpleCNN_Number, self).__init__()
+class SimpleCNN_Wind(nn.Module):
+    def __init__(self, num_classes=8):  # 0-9 + kropka
+        super(SimpleCNN_Wind, self).__init__()
         self.conv1 = nn.Conv2d(1, 16, 3, padding=1)
         self.conv2 = nn.Conv2d(16, 32, 3, padding=1)
         self.fc1 = nn.Linear(32*7*7, 64)
@@ -28,14 +29,38 @@ def load_images(folder):
     X = []
     y = []
     for file in os.listdir(folder):
-        if not file.endswith(".jpg"):
+        if not file.endswith(".png"):
             continue
-        label = int(os.path.splitext(file)[0])
+        label = int(os.path.splitext(file)[0][0])
         img = Image.open(os.path.join(folder, file))
         img = transform(img)
         X.append(img)
         y.append(label)
     return torch.stack(X), torch.tensor(y)
+
+def crop_digit(image):
+    """
+    Usuwa czarne tło wokół cyfry i zwraca wycięty obraz.
+    Zakłada, że cyfra jest jaśniejsza niż tło.
+    """
+
+    # Jeśli obraz jest kolorowy → konwertujemy
+    if len(image.shape) == 3:
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+    # Znajdź nie-czarne piksele (cyfra)
+    coords = cv2.findNonZero(image)
+
+    if coords is None:
+        return image  # puste zdjęcie, nic nie wycinamy
+
+    # Pobranie bounding-boxa cyfry
+    x, y, w, h = cv2.boundingRect(coords)
+
+    # Zwróć wycięty fragment
+    cropped = image[y:y+h, x:x+w]
+
+    return cropped
 
 # Augmentacja ręczna: np. przesunięcia, skalowanie
 def augment(img):
@@ -50,13 +75,15 @@ if __name__ == "__main__":
         transforms.ToTensor(),  # [0,1]
     ])
 
-    model = SimpleCNN_Number()
+    model = SimpleCNN_Wind()
 
-    X, y = load_images("cyfry")
+    X, y = load_images("wiatr")
     print(X.shape, y.shape)
 
     X_aug = torch.stack([augment(x) for x in X])
     y_aug = y
+
+    print(y)
 
     dataset = TensorDataset(X_aug, y_aug)
     loader = DataLoader(dataset, batch_size=2, shuffle=True)
@@ -65,7 +92,7 @@ if __name__ == "__main__":
     criterion = nn.CrossEntropyLoss()
 
     # Proste trenowanie 50 epok
-    for epoch in range(50):
+    for epoch in range(100):
         for xb, yb in loader:
             optimizer.zero_grad()
             out = model(xb)
@@ -73,8 +100,5 @@ if __name__ == "__main__":
             loss.backward()
             optimizer.step()
 
-    torch.save(model.state_dict(), "model_cyfr_weights.pth")
-
-
-
+    torch.save(model.state_dict(), "model_wiatru_weights.pth")
 
