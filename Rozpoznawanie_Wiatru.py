@@ -27,9 +27,8 @@ class RozpoznawanieWiatru:
 
         with torch.no_grad():
             output = self.model(resized)
-            output = np.argmax(output, axis=1)
-        return np.array(output)[0]
-
+            pred = torch.argmax(output, dim=1)
+        return pred.item()
 
     def crop_digit(self, image):
         """

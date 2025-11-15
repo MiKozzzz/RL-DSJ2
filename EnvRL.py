@@ -7,13 +7,12 @@ import gymnasium as gym
 from gymnasium import spaces
 import numpy as np
 import cv2
-from stable_baselines3 import DQN, PPO
 from Rozpoznawanie_Wiatru import RozpoznawanieWiatru
 from Rozpoznawanie_Liczb import RozpoznawanieLiczb
 
-class WindEnv(gym.Env):
+class DSJEnv(gym.Env):
     def __init__(self, center_x, center_y):
-        super(WindEnv, self).__init__()
+        super(DSJEnv, self).__init__()
         # Definiujemy przestrzeń akcji: 4 akcje (w górę, w dół, kliknięcie, nic)
         self.action_space = spaces.Discrete(4)
         # Przestrzeń obserwacji: obraz w skali szarości 200x200
@@ -35,10 +34,13 @@ class WindEnv(gym.Env):
                                                    "height": 20}}
         # Stany
         # 0- dojazd do progu, 1- lot, 2-ladowanie
+        self.wind_speed = 0
+        self.wind_direction = 0
         self.state = 0
         self.slownik = {0: "dojazd do progu",
                         1: "lot",
                         2: "ladowanie"}
+        self.epiosde = 0
         self.total_reward = 0
         self.max_score = 0
         self.max_jump = 0
@@ -105,7 +107,11 @@ class WindEnv(gym.Env):
             # Zapisywanie najdłuszego skoku
             if self.max_jump < jump_len:
                 self.max_jump = jump_len
+
+            self.epiosde += 1
             # Wyświetlanie informacji
+            print(f"\nEpisde: {self.epiosde}")
+            print(f"Wiatr kierunek: {self.wind_direction} siła: {self.wind_speed}")
             print(f"Skonczył lot przy fazie: {self.slownik[self.state]}")
             print(f"Wynik za skok: {reward}")
             print(f"Zebrana nagroda: {self.total_reward}")
@@ -119,10 +125,10 @@ class WindEnv(gym.Env):
 
     def reset(self, *, seed=None, options=None):
         # Resetujemy stan środowiska
+        time.sleep(1.5)
         self.state = 0
         self.total_reward = 0
         self.click()
-        print("Menu")
         time.sleep(1)
         # TODO: tu można wrzucić jakąś funkcję zmiany skoczni w przyszłości
         self.click()
@@ -133,8 +139,10 @@ class WindEnv(gym.Env):
         time.sleep(0.5)
         info = {}
         # TODO: Dodać tutaj zapisywanie danych o wietrze
-        # wind_speed = np.array(self.cap.grab(self.wind_speed_observation))[:, :, :3]
-        # wind_direction = np.array(self.cap.grab(self.wind_direction_observation))[:, :, :3]
+        frame_wind_speed = self.grab_frame("wind_speed_observation")
+        self.wind_speed = self.Rozpoznawanie_liczb.rozpoznawanie_cyfr(frame_wind_speed)
+        frame_wind_direction = self.grab_frame("wind_direction_observation")
+        self.wind_direction = self.Rozpoznawanie_wiatru.rozpoznawanie_wiatru(frame_wind_direction)
         self.click()
         return self._get_observation(), info
 
