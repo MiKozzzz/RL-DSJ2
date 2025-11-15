@@ -8,38 +8,34 @@ from gymnasium import spaces
 import numpy as np
 import cv2
 from stable_baselines3 import DQN, PPO
+from Rozpoznawanie_Wiatru import RozpoznawanieWiatru
+from Rozpoznawanie_Liczb import RozpoznawanieLiczb
 
 class WindEnv(gym.Env):
-    def __init__(self):
+    def __init__(self, center_x, center_y):
         super(WindEnv, self).__init__()
-
         # Definiujemy przestrzeń akcji: 4 akcje (w górę, w dół, kliknięcie, nic)
         self.action_space = spaces.Discrete(4)
-
         # Przestrzeń obserwacji: obraz w skali szarości 200x200
         self.observation_space = spaces.Box(low=0, high=255, shape=(1, 200, 200), dtype=np.uint8)
-
+        # Modele
+        self.Rozpoznawanie_wiatru = RozpoznawanieWiatru()
+        self.Rozpoznawanie_liczb = RozpoznawanieLiczb()
         # Lokacje obrazu
         self.cap = mss()
-        # Obraz zawodnika
-        self.jumper_observation = {"top": 110, "left": 215, "width": 200, "height": 200}
-        # Kierunek wiatru
-        self.wind_direction_observation = {"top": 36, "left": 580, "width": 50, "height": 30}
-        # Sila wiatru
-        self.wind_speed_observation = {"top": 64, "left": 580, "width": 50, "height": 17}
-        # Długość skoku
-        self.jump_length_observation = {"top": 402, "left": 300, "width": 62, "height": 20}
-        # Warunek końca skoku
-        self.done_observation = {"top": 402, "left": 300, "width": 80, "height": 20}
-        # Wynik
-        self.score_observation = {"top": 402, "left": 500, "width": 110, "height": 20}
-        # Warunek pojawienia się wyniku
-        self.done_score_observation = {"top": 402, "left": 450, "width": 150, "height": 20}
-
+        self.dict_windows = {"jumper_observation": {"top": center_y - 100, "left": center_x - 100, "width": 200,
+                                                    "height": 200},
+                             "wind_direction_observation": {"top": center_y - 178, "left": center_x + 260, "width": 45,
+                                                            "height": 29},
+                             "wind_speed_observation": {"top": center_y - 150, "left": center_x + 264, "width": 40,
+                                                        "height": 17},
+                             "jump_length_observation": {"top": center_y + 190, "left": center_x - 25, "width": 65,
+                                                         "height": 20},
+                             "score_observation": {"top": center_y + 190, "left": center_x + 160, "width": 110,
+                                                   "height": 20}}
         # Stany
         # 0- dojazd do progu, 1- lot, 2-ladowanie
         self.state = 0
-        self.liczba_klik = 0
         self.slownik = {0: "dojazd do progu",
                         1: "lot",
                         2: "ladowanie"}
@@ -50,7 +46,7 @@ class WindEnv(gym.Env):
     def step(self, action):
         # Definiowanie warunków zakończenia
         truncated = False
-        terminated = self._check_done_condition()
+        terminated = self._check_done_condition("jump_length_observation")
         # Wykonujemy akcję, jeżeli warunek zakończenia nie jest spełniony
         if not terminated:
             reward = 0
@@ -64,7 +60,6 @@ class WindEnv(gym.Env):
                     reward = 2
             elif action == 2:  # kliknięcie myszką
                 self._click_mouse()
-                self.liczba_klik += 1
                 if self.state == 0:
                     reward = 1
                     self.state += 1
@@ -82,24 +77,20 @@ class WindEnv(gym.Env):
         else:
             print("koniec")
             # Czekanie aż pojawi się wynik za skok
-            stop = True
-            # TODO: zmienić to w funkcję podobną do check condition
-            while stop:
-                score = np.array(self.cap.grab(self.done_score_observation))[:, :, :3]
-                gray_img = cv2.cvtColor(score, cv2.COLOR_BGR2GRAY)
-                _, binary_image = cv2.threshold(gray_img, 130, 255, cv2.THRESH_BINARY)
-                if np.sum(binary_image) > 0:
-                    stop = False
-            # Czytanie obrazu wyniku
-            img = np.array(self.cap.grab(self.score_observation))[:, :, :3]
-            reward = self.rozpoznawanie_cyfr(img) + 168
+            while not self._check_done_condition("score_observation"):
+                pass
+
+            frame_score = self.grab_frame("score_observation")
+            reward = self.Rozpoznawanie_liczb.rozpoznawanie_cyfr(frame_score) + 168
+            # TODO: Przy różnych skoczniach różny minus dla AUS to -168 ale dla innych nie
             # Jeżeli nie było dyskwalifikacji, czytanie długości skoku
             if reward != 0:
-                img_len = np.array(self.cap.grab(self.jump_length_observation))[:, :, :3]
-                jump_len = self.rozpoznawanie_cyfr(img_len)
+                frame_len = self.grab_frame("jump_length_observation")
+                jump_len = self.Rozpoznawanie_liczb.rozpoznawanie_cyfr(frame_len)
             else:
                 jump_len = 0
 
+            # TODO: Można pomyśleć czy da się znaleźć jakieś konkretne wartości kar niż takie z czapy
             # Kara za brak wybicia
             if self.state == 0:
                 reward -= 400
@@ -118,11 +109,8 @@ class WindEnv(gym.Env):
             print(f"Skonczył lot przy fazie: {self.slownik[self.state]}")
             print(f"Wynik za skok: {reward}")
             print(f"Zebrana nagroda: {self.total_reward}")
-            print(f"Liczba click: {self.liczba_klik}")
             print(f"Największy wynik to: {self.max_score}")
             print(f"Najdłuższy skok: {self.max_jump}")
-
-
         # Zaktualizowanie obserwacji
         new_observation = self._get_observation()
         # Info
@@ -131,27 +119,22 @@ class WindEnv(gym.Env):
 
     def reset(self, *, seed=None, options=None):
         # Resetujemy stan środowiska
-        time.sleep(1)
         self.state = 0
         self.total_reward = 0
-        self.liczba_klik = 0
         self.click()
         print("Menu")
         time.sleep(1)
+        # TODO: tu można wrzucić jakąś funkcję zmiany skoczni w przyszłości
         self.click()
-        time.sleep(1)
+        time.sleep(0.5)
         # Czekanie aż załaduje się gra
-        # TODO: zmiana tej funkcji na jak check condition
-        stop = True
-        while stop:
-            img = np.array(self.cap.grab(self.wind_direction_observation))[:, :, :3]
-            gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-            _, binary_image = cv2.threshold(gray_img, 80, 255, cv2.THRESH_BINARY)
-            if np.sum(binary_image) > 0:
-                stop = False
-                print('juz')
-        time.sleep(1)
+        while not self._check_done_condition("wind_direction_observation"):
+            pass
+        time.sleep(0.5)
         info = {}
+        # TODO: Dodać tutaj zapisywanie danych o wietrze
+        # wind_speed = np.array(self.cap.grab(self.wind_speed_observation))[:, :, :3]
+        # wind_direction = np.array(self.cap.grab(self.wind_direction_observation))[:, :, :3]
         self.click()
         return self._get_observation(), info
 
@@ -161,10 +144,9 @@ class WindEnv(gym.Env):
 
     def _get_observation(self):
         # Screeny zawodnika
-        jumper = np.array(self.cap.grab(self.jumper_observation))[:, :, :3]
+        jumper = self.grab_frame("jumper_observation")
         jumper_done = self.odczyt_zawodnika(jumper)
-        # wind_speed = np.array(self.cap.grab(self.wind_speed_observation))[:, :, :3]
-        # wind_direction = np.array(self.cap.grab(self.wind_direction_observation))[:, :, :3]
+        # TODO: Można dodać tutaj aktualizację danych wiatru ale najpewniej co któryś krok, żeby nie z każdym
         return jumper_done
 
     def _move_mouse_up(self):
@@ -178,10 +160,11 @@ class WindEnv(gym.Env):
     def _click_mouse(self):
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
         win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN, 0, 0)
+        # TODO: Znany trick to zrobienie szybkiego ruchu myszką w dół i w góre przy wybiciu można to dodać
         # pyautogui.move(0, 30)
         time.sleep(0.10)
         # pyautogui.move(0, -30)
-        time.sleep(0.15)
+        # time.sleep(0.15)
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
         win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP, 0, 0)
         return 1
@@ -191,27 +174,19 @@ class WindEnv(gym.Env):
         time.sleep(0.1)
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
 
-    # TODO: zmienić dane wejściowe bo najpewniej słownik obrazu będzie po prostu w self.
-    def _check_done_condition(self, name, dictonary):
-        frame = np.array(mss().grab(dictonary[name]))
+    def grab_frame(self, name):
+        return np.array(self.cap.grab(self.dict_windows[name]))
+
+    def _check_done_condition(self, name):
+        frame = self.grab_frame(name)
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        print(gray)
-        # wykrycie jasno-litery > prog
-        return bool(np.any(gray > 130))
+        # wykrycie jasnych pixeli > prog
+        return bool(np.any(gray > 80))
 
-    def rozpoznawanie_wiatru(self, img):
+    # TODO: Zobaczymy czy będę z tego korzystał
+    def odczyt_zawodnika(self, frame):
         # Konwersja do skali szarości
-        gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        _, binary_image = cv2.threshold(gray_img, 80, 255, cv2.THRESH_BINARY)
-        gotowe = binary_image.reshape(1, 30, 50)
-        classifications = model_wiatr.predict(gotowe)
-        predicted_classes = np.argmax(classifications, axis=1)
-        return predicted_classes[0]
-
-
-    def odczyt_zawodnika(self, img):
-        # Konwersja do skali szarości
-        gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        gray_img = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         value_list = [76, 85, 73, 109, 42, 55, 65, 52, 108, 231, 92, 24]
         # 76 kask
         # 85 Gorna narta (Uwaga tlo)
@@ -240,59 +215,3 @@ class WindEnv(gym.Env):
         channel = np.reshape(filtered_image, (1, 200, 200))
         return channel
 
-
-# BOT
-model_cyfr = load_model("best_cyfry.keras")
-model_wiatr = load_model("best_wiatr.keras")
-model_kat = load_model("model_kat.keras")
-
-# DANE WEJSCIOWE
-# OBRAZ
-# STANY
-# WYBICIE, LOT, LADOWANIE
-# AKCJE
-# klik, ruch myszki w gore, ruch myszki w dol, czekanie
-
-
-# Inicjalizacja środowiska
-env = WindEnv()
-
-# model = DQN("CnnPolicy", env, verbose=1, buffer_size=500000, learning_starts=1000)
-#
-# model = PPO("CnnPolicy", env, verbose=1)
-# model.learn(total_timesteps=40000)
-# model.save("ppo_DSJ")
-
-# model = PPO.load("ppo_DSJ", env=env)
-# model.learn(total_timesteps=10000)
-# model.save("ppo_DSJ")
-#
-
-# model = PPO("MultiInputPolicy", env, verbose=1, device="cuda")
-
-model = PPO.load("ppo_DSJ6_10", env=env)
-
-obs, info = env.reset()
-while True:
-    action, _states = model.predict(obs, deterministic=True)
-    obs, reward, terminated, truncated, info = env.step(action)
-    if terminated or truncated:
-        print("Uczenie zakończone")
-        obs, info = env.reset()
-
-
-
-# env_checker.check_env(env)
-#
-# plt.imshow(cv2.cvtColor(env._get_observation()[0], cv2.COLOR_BGR2RGB))
-# plt.show()
-
-# for episode in range(10):
-#     obs, info = env.reset(seed=0)
-#     done = False
-#     total_reward = 0
-#
-#     while not done:
-#         obs, reward, done, tru, info = env.step(env.action_space.sample())
-#         total_reward += reward
-#     print(f"Total reward for episode {episode} is {total_reward}")

@@ -7,8 +7,6 @@ import pyautogui
 import win32api
 import win32con
 import win32gui
-
-import Rozpoznawanie_Wiatru
 from Rozpoznawanie_Wiatru import RozpoznawanieWiatru
 from Rozpoznawanie_Liczb import RozpoznawanieLiczb
 
