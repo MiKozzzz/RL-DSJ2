@@ -126,14 +126,10 @@ while not _check_done_condition("jump_length_observation", dict_windows):
     img_speed = np.array(mss().grab(dict_windows["wind_speed_observation"]))
     print("Siła wiatru: ", RozpoznawanieLiczb().rozpoznawanie_cyfr(img_speed))
     time.sleep(2)
-
-
 # zapis do pliku JPG
 cv2.imwrite(f"probka.png", img_speed)
 
-img = np.array(mss().grab(dict_windows["jump_length_observation"]))
-print("Długość skoku: ", RozpoznawanieLiczb().rozpoznawanie_cyfr(img))
-
+img = np.array(mss().grab(dict_windows["jumper_observation"]))
 # zapis do pliku JPG
 cv2.imwrite(f"probka2.png", img)
 

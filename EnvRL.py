@@ -15,9 +15,20 @@ class DSJEnv(gym.Env):
         super(DSJEnv, self).__init__()
         # Definiujemy przestrzeń akcji: 4 akcje (w górę, w dół, kliknięcie, nic)
         self.action_space = spaces.Discrete(4)
-        # Przestrzeń obserwacji: obraz w skali szarości 200x200
-        self.observation_space = spaces.Box(low=0, high=255, shape=(1, 200, 200), dtype=np.uint8)
-        # Modele
+        # TODO: Można pomyśleć czy nie dodać do obserwacji w jakiej fazie się znajduje (prog, lot, ladowanie)
+        # Przestrzeń obserwacji: obraz w skali szarości 200x200, siła, kierunek wiatru
+        self.observation_space = gym.spaces.Dict({
+            "frame": gym.spaces.Box(
+                low=0, high=255, shape=(200, 200, 1), dtype=np.uint8
+            ),
+            "wind_direction": gym.spaces.Box(
+                low=0, high=7, shape=(1,), dtype=np.int64
+            ),
+            "wind_strength": gym.spaces.Box(
+                low=0, high=5.0, shape=(1,), dtype=np.float32
+            ),  # ciągła wartość
+        })
+
         self.Rozpoznawanie_wiatru = RozpoznawanieWiatru()
         self.Rozpoznawanie_liczb = RozpoznawanieLiczb()
         # Lokacje obrazu
@@ -77,7 +88,6 @@ class DSJEnv(gym.Env):
 
         # Jeżeli warunek zakończenia spełniony
         else:
-            print("koniec")
             # Czekanie aż pojawi się wynik za skok
             while not self._check_done_condition("score_observation"):
                 pass
@@ -132,17 +142,17 @@ class DSJEnv(gym.Env):
         time.sleep(1)
         # TODO: tu można wrzucić jakąś funkcję zmiany skoczni w przyszłości
         self.click()
-        time.sleep(0.5)
+        time.sleep(1)
         # Czekanie aż załaduje się gra
         while not self._check_done_condition("wind_direction_observation"):
             pass
         time.sleep(0.5)
-        info = {}
-        # TODO: Dodać tutaj zapisywanie danych o wietrze
+        # Pobieranie danych o wietrze
         frame_wind_speed = self.grab_frame("wind_speed_observation")
         self.wind_speed = self.Rozpoznawanie_liczb.rozpoznawanie_cyfr(frame_wind_speed)
         frame_wind_direction = self.grab_frame("wind_direction_observation")
         self.wind_direction = self.Rozpoznawanie_wiatru.rozpoznawanie_wiatru(frame_wind_direction)
+        info = {}
         self.click()
         return self._get_observation(), info
 
@@ -151,11 +161,19 @@ class DSJEnv(gym.Env):
         pass
 
     def _get_observation(self):
-        # Screeny zawodnika
-        jumper = self.grab_frame("jumper_observation")
-        jumper_done = self.odczyt_zawodnika(jumper)
+        jumper = self.grab_frame("jumper_observation")[:, :, :3]
+        # TODO: Syf z rozmiarami
+        jumper_done = self.odczyt_zawodnika(jumper)[0]
+        # Dodaj kanał
+        jumper_done = jumper_done[:, :, np.newaxis]  # (200,200,1)
         # TODO: Można dodać tutaj aktualizację danych wiatru ale najpewniej co któryś krok, żeby nie z każdym
-        return jumper_done
+        obs = {
+            "frame": jumper_done,  # (200, 200, 1), dtype=np.uint8
+            "wind_direction": np.array([self.wind_direction], dtype=np.int64),
+            "wind_strength": np.array([self.wind_speed], dtype=np.float32)
+        }
+
+        return obs
 
     def _move_mouse_up(self):
         pyautogui.move(0, -3)
@@ -183,7 +201,7 @@ class DSJEnv(gym.Env):
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
 
     def grab_frame(self, name):
-        return np.array(self.cap.grab(self.dict_windows[name]))
+        return np.array(self.cap.grab(self.dict_windows[name]), copy=True)
 
     def _check_done_condition(self, name):
         frame = self.grab_frame(name)
@@ -223,3 +241,11 @@ class DSJEnv(gym.Env):
         channel = np.reshape(filtered_image, (1, 200, 200))
         return channel
 
+
+if __name__ == "__main__":
+    env = DSJEnv(400, 400)
+    img = cv2.imread("probka2.png", cv2.IMREAD_COLOR)  # kolor
+    frame = env.odczyt_zawodnika(img)[0]
+    cv2.imshow("name", frame)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
