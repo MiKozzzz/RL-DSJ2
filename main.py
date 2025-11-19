@@ -1,17 +1,13 @@
 from stable_baselines3 import PPO
 from EnvRL import DSJEnv
 import time
-import subprocess
-import pyautogui
-import win32api
-import win32con
-import win32gui
 from stable_baselines3.common import env_checker
 from stable_baselines3.common.torch_layers import BaseFeaturesExtractor
 import torch
 import torch.nn as nn
 from gymnasium import spaces
 from datetime import datetime
+
 
 # TODO: To trzeba jeszcze przejrzeć i zrozumieć, bo DeepSeek mi to zrobił kij wie czy dobrze, niby działa
 class DSJFeatureExtractor(BaseFeaturesExtractor):
@@ -39,8 +35,10 @@ class DSJFeatureExtractor(BaseFeaturesExtractor):
         self.fc = nn.Sequential(
             nn.Linear(n_flat + 1 + 4, 128),
             nn.ReLU(),
-            nn.Linear(128, 128),  # dodatkowa warstwa dla lepszej reprezentacji
-            nn.ReLU()
+            nn.Dropout(0.1),  # DODANE - 10% dropout
+            nn.Linear(128, 128),
+            nn.ReLU(),
+            nn.Dropout(0.1),  # DODANE
         )
 
     def forward(self, obs):
@@ -74,75 +72,74 @@ class DSJFeatureExtractor(BaseFeaturesExtractor):
         # --- MLP ---
         return self.fc(x)
 
-
-class Cursor:
-    def __init__(self, width, height):
-        self.x_postion = width / 2
-        self.y_postion = height / 2
-        print(f"X: {self.x_postion}, Y: {self.y_postion}")
-
-    def click(self):
-        win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
-        time.sleep(0.1)
-        win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
-
-    def move_to(self, x, y):
-        pyautogui.move(x - self.x_postion, y - self.y_postion)
-        self.x_postion = x
-        self.y_postion = y
-        print(f"X: {self.x_postion}, Y: {self.y_postion}")
-
 def checker_env(env, episodes=10):
-    env_checker.check_env(env)
+    # env_checker.check_env(env)
 
-    for episode in range(episodes-1):
-        obs, info = env.reset(seed=0)
+    for episode in range(episodes - 1):
+        obs, info = env.reset()
         done = False
         total_reward = 0
-
         while not done:
             obs, reward, done, tru, info = env.step(env.action_space.sample())
             total_reward += reward
-        print(f"Total reward for episode {episode} is {total_reward}")
 
 
-def learn_PPO(env, timesteps, cuda):
+# TODO: Cuda czy jest czy nie, dodam reset_num_timesteps=False
+def learn_PPO(env, timesteps, model=None, reset=True):
     policy_kwargs = dict(
         features_extractor_class=DSJFeatureExtractor,
     )
-    if cuda:
-        model = PPO(
-            "MultiInputPolicy",
-            env,
-            policy_kwargs=policy_kwargs,
-            verbose=1,
-            device="cuda"
-        )
+    # TODO: reset bufora trzeba będzie to zeminić
+    if model is not None:
+        model.ent_coef = 0.01  # WIĘCEJ eksploracji
+        model.clip_range = 0.3  # WIĘKSZE zmiany strategii
+        model.learning_rate = 1e-5  # MNIEJSZY krok
+        model.n_epochs = 5  # MNIEJ przejść przez dane
+
+        # # DEFAULT PARAMETERS:
+        # n_steps = 2048
+        # batch_size = 64
+        # n_epochs = 10
+        # learning_rate = 3e-4
+        # clip_range = 0.2
+        # gamma = 0.99
+        # gae_lambda = 0.95
+        # ent_coef = 0.0  # ← WYŁĄCZONE domyślnie!
+        # vf_coef = 0.5
+        # max_grad_norm = 0.5
+
     else:
         model = PPO(
             "MultiInputPolicy",
             env,
             policy_kwargs=policy_kwargs,
-            verbose=1
+            learning_rate=3e-4,  # Możesz dostosować
+            n_steps=8192,  # Dłuższe rollout
+            batch_size=256,
+            n_epochs=10,
+            clip_range=0.3,
+            ent_coef=0.01,  # Zachęca do eksploracji
+            verbose=1,
+            device="cuda",
         )
 
-    model.learn(total_timesteps=timesteps)
-    now = datetime.now()
-    model.save("PPO_"+now.strftime("%Y-%m-%d %H:%M"))
+    model.learn(total_timesteps=timesteps, reset_num_timesteps=reset)
+    # now = datetime.now()
+    # name = "PPO_" + now.strftime("%Y-%m-%d_%H:%M")
+    name = 'ppo_19_11_2025'
+    model.save(name)
 
-def load_model():
-    # model = PPO.load("ppo_DSJ", env=env)
-    # model.learn(total_timesteps=10000)
-    # model.save("ppo_DSJ")
 
-    # obs, info = env.reset()
-    # while True:
-    #     action, _states = model.predict(obs, deterministic=True)
-    #     obs, reward, terminated, truncated, info = env.step(action)
-    #     if terminated or truncated:
-    #         print("Uczenie zakończone")
-    #         obs, info = env.reset()
-    pass
+def load_model_test(env, model):
+    # Uruchom episod
+    obs, _ = env.reset()
+    for _ in range(2000):  # maksymalna liczba kroków
+        action, _states = model.predict(obs, deterministic=True)
+        obs, reward, terminated, truncated, info = env.step(action)
+        if terminated:
+            obs, info = env.reset()
+            break
+
 
 def main(path_game):
     CUDA = torch.cuda.is_available()
@@ -154,48 +151,22 @@ def main(path_game):
     else:
         print("Brak GPU z CUDA, będzie używany CPU")
 
-    subprocess.Popen([path_game], shell=True)
-    time.sleep(3)
-    # Włączenie trybu oknowego
-    pyautogui.hotkey('alt', 'enter')
-    time.sleep(5)
-    hwnd = win32gui.FindWindow(None, "DOSBox 0.74-3, Cpu speed:   100000 cycles, Frameskip  0, Program:      DSJ")
-    # Liczenie współrzędnych środka okna DSJ
-    rect = win32gui.GetWindowRect(hwnd)
-    # Środek okna DSJ 640x400. Teoretycznie okno większę ale to przez pasek menu, sama gra ma własciwie tyle
-    print(rect)
-    print("Rozdziałka gry: ", rect[2] - rect[0], rect[3] - rect[1])
-    # Środek okna
-    center_x = int((rect[2] + rect[0]) / 2)
-    center_y = int((rect[3] + rect[1]) / 2)
-    print(center_x, center_y)
-    # Inicjalizacja środowiska
-    env = DSJEnv(center_x, center_y)
-    # Kliknięcie w okno gry DSJ
-    pyautogui.moveTo(center_x, center_y)
-    # Kursor dla okna DSJ 640x400
-    cursor = Cursor(640, 400)
-    cursor.click()
-    time.sleep(3)
-    cursor.move_to(160, 210)
-    time.sleep(1)
-    cursor.click()
-    time.sleep(1)
-    cursor.move_to(440, 310)
-    time.sleep(1)
-    cursor.click()
-    time.sleep(2)
-    cursor.click()
-    time.sleep(0.5)
-    cursor.click()
-    time.sleep(3)
+    env = DSJEnv()
+    env.initialize_game(path_game, "DOSBox 0.74-3, Cpu speed:   100000 cycles, Frameskip  0, Program:      DSJ")
 
-    # env = DSJEnv(349, 240)
-    learn_PPO(env, 20000, CUDA)
-    # checker_env(env)
+    checker_env(env)
+
+    # learn_PPO(env, 140000, reset=False)
+
+    # model = PPO.load("ppo_4.zip", env)
+    # learn_PPO(env, 20000, model, reset=False)
+
+    # model = PPO.load("ppo_4.zip", env)
+    # load_model_test(env, model)
+
     time.sleep(3)
     # Wyłączanie gry
-    win32gui.PostMessage(hwnd, win32con.WM_CLOSE, 0, 0)
+    env.quit_game()
 
 
 if __name__ == "__main__":
