@@ -45,13 +45,48 @@ The goal is to train an autonomous jumper capable of performing full ski jumps (
 
 ## 📦 Files & Structure
 
-- `pudv4.py` – custom Gym environment
-- `cyfry` – file with photos of digits
-- `wiatr` – file with photos of wind
-- `Model_Ropoznawania_kierunku_wiatru.py` – trains a model to recognize wind from game screenshots
-- `Model_Rozpoznawanie_cyfr.py` – trains a model to recognize digits from game screenshots (used to extract jump length and scores)
-- `best_cyfry.keras` – trained digit recognition model
-- `best_wiatr.keras` – trained wind recognition model
+```plaintext
+RL-DSJ2/
+├── 📁 models/                         # All trained models
+│   ├── rl/                           # Reinforcement Learning models
+│   │   ├── ppo_1.zip
+│   │   └── ... (other model versions)
+│   ├── vision/                       # Weights for computer Vision models
+│   │   ├── model_cyfr_weights.pth
+│   │   ├── model_wiatru_weights.pth
+│   │   └── ...
+│   └── training/                     # Training checkpoints and logs
+│       ├── checkpoints/
+│       └── tensorboard_logs/
+├── 📁 src/                           # Source code
+│   ├── environment/
+│   │   ├── EnvRL.py                  # DSJ2 Gym environment
+│   │   └── __init__.py
+│   ├── vision/
+│   │   ├── Model_Rozpoznawania_kierunku_wiatru.py
+│   │   ├── Model_Rozpoznawanie_cyfr.py
+│   │   ├── Rozpoznawanie_Liczb.py
+│   │   ├── Rozpoznawanie_Wiatru.py
+│   │   └── __init__.py
+│   ├── utils/
+│   │   ├── Cursor.py                 # Mouse control utilities
+│   │   └── __init__.py
+│   ├── main.py                       # Main training script
+│   └── __init__.py
+├── 📁 data/                          # Data and assets
+│   ├── images/                       # Sample images and screenshots
+│   │   ├── liczba.png
+│   │   ├── skoczek.png
+│   │   └── wiatr.png
+│   ├── datasets/                     # Training datasets
+│   │   ├── cyfry/                    # Digit dataset
+│   │   └── wiatr/                    # Wind direction dataset
+│   └── config/
+│       └── pozycje w oknie DSJ.txt   # Window position config
+├── README.md
+└── .gitignore
+```
+
 
 ## 📈 Future Improvements
 
