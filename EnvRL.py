@@ -6,7 +6,6 @@ import subprocess
 from mss import mss
 import pyautogui
 import gymnasium as gym
-from gymnasium import spaces
 import numpy as np
 import cv2
 from Rozpoznawanie_Wiatru import RozpoznawanieWiatru
@@ -17,16 +16,14 @@ class DSJEnv(gym.Env):
     def __init__(self):
         super(DSJEnv, self).__init__()
         # Definiujemy przestrzeń akcji: 4 akcje (w górę, w dół, kliknięcie, nic)
-        self.action_space = spaces.Discrete(4)
+        self.action_space = gym.spaces.Discrete(4)
         # TODO: Można pomyśleć czy nie dodać do obserwacji w jakiej fazie się znajduje (prog, lot, ladowanie)
         # Przestrzeń obserwacji: obraz w skali szarości 200x200, siła, kierunek wiatru
         self.observation_space = gym.spaces.Dict({
             "frame": gym.spaces.Box(
                 low=0, high=255, shape=(200, 200, 1), dtype=np.uint8
             ),
-            "wind_direction": gym.spaces.Box(
-                low=0, high=7, shape=(1,), dtype=np.int64
-            ),
+            "wind_direction": gym.spaces.Box(low=0, high=7, shape=(1,), dtype=np.int64),
             "wind_strength": gym.spaces.Box(
                 low=0, high=5.0, shape=(1,), dtype=np.float32
             ),  # ciągła wartość
@@ -84,13 +81,13 @@ class DSJEnv(gym.Env):
         # Liczenie współrzędnych środka okna DSJ
         rect = win32gui.GetWindowRect(self.hwnd)
         # Środek okna DSJ 640x400. Teoretycznie okno większę ale to przez pasek menu, sama gra ma własciwie tyle
-        print(rect)
+        # print(rect)
         left, top, right, bottom = rect
         print("Rozdziałka gry: ", right - left, bottom - top)
         # Środek okna
         self.center_x = int((right + left) / 2)
         self.center_y = int((bottom + top) / 2)
-        print(self.center_x, self.center_y)
+        # print(self.center_x, self.center_y)
         self.dict_windows = {
             "jumper_observation": {"top": self.center_y - 100, "left": self.center_x - 100, "width": 200,
                                    "height": 200},
@@ -156,7 +153,7 @@ class DSJEnv(gym.Env):
             if time.time() - start_time > self.TIMEOUT_LOAD:  # 10 sekund timeout
                 raise Exception(f"Timeout after {self.TIMEOUT_LOAD}s waiting for load game!")
             time.sleep(self.SLEEP_INTERVAL)
-        time.sleep(0.5)
+        time.sleep(1.5)
         # Pobieranie danych o wietrze
         frame_wind_speed = self.grab_frame("wind_speed_observation")
         self.wind_speed = self.Rozpoznawanie_liczb.rozpoznawanie_cyfr(frame_wind_speed)
@@ -183,13 +180,13 @@ class DSJEnv(gym.Env):
         reward = 0
         if self.state == 0:  # Stan: najazd na progu
             if action == 2:  # kliknięcie myszką
-                reward = 10
+                reward = 40
                 self.state += 1
             elif action == 3:
                 reward = 1
         elif self.state == 1:  # Stan: lot
             if action == 2:  # kliknięcie myszką
-                reward = 30
+                reward = 80
             else:
                 reward = 2
         else:  # Stan: lądowanie
@@ -235,7 +232,7 @@ class DSJEnv(gym.Env):
         obs = {
             "frame": jumper_done,  # (200, 200, 1), dtype=np.uint8
             "wind_direction": np.array([self.wind_direction], dtype=np.int64),
-            "wind_strength": np.array([self.wind_speed], dtype=np.float32)
+            "wind_strength": np.array([self.wind_speed / 5], dtype=np.float32)  # Normalizacja siły wiatru
         }
 
         return obs
@@ -269,9 +266,11 @@ class DSJEnv(gym.Env):
         return 1
 
     def grab_frame(self, name):
-        return np.array(self.cap.grab(self.dict_windows[name]), copy=True)
+        return np.array(self.cap.grab(self.dict_windows[name]))
 
     # TODO: Zobaczymy czy będę z tego korzystał
+    # Szybkie przetwarzanie obrazu z Look-Up Table
+    # Zysk wydajności: 10-100x w porównaniu do pętli for
     def odczyt_zawodnika(self, frame):
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         mask = self._player_lut[gray] == 1  # szybkie indeksowanie tablicą

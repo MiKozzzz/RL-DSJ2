@@ -42,40 +42,28 @@ class DSJFeatureExtractor(BaseFeaturesExtractor):
         )
 
     def forward(self, obs):
-        # --- Obraz ---
+        # Obraz
         img = obs["frame"].float()
-        # Poprawka: jeśli obraz ma kształt (B, H, W, C), zmieniamy na (B, C, H, W)
-        if len(img.shape) == 4 and img.shape[-1] == 1:  # jeśli kanał jest ostatni
+        if img.dim() == 4 and img.size(-1) == 1:
             img = img.permute(0, 3, 1, 2)
-        # --- CNN ---
+
         cnn_out = self.cnn(img)
-        # --- Wind direction (embedding) ---
-        wind_dir = obs["wind_direction"].long()
-        # Sprawdź kształt i odpowiednio przetwórz
-        if len(wind_dir.shape) > 1:
-            wind_dir = wind_dir.squeeze(-1)  # usuń ostatni wymiar jeśli istnieje
-        # Jeśli nadal ma więcej niż 1 wymiar, weź tylko pierwszy element
-        if len(wind_dir.shape) > 1 and wind_dir.shape[1] > 1:
-            wind_dir = wind_dir[:, 0]  # weź tylko pierwszy kierunek wiatru
-        wind_dir_emb = self.embed_dir(wind_dir)  # (B, 4)
-        # Jeśli wind_dir_emb ma 3 wymiary, zredukuj do 2
-        if len(wind_dir_emb.shape) == 3:
-            wind_dir_emb = wind_dir_emb.squeeze(1)  # (B, 4)
-        # --- Wind strength ---
+
+        wind_dir = obs["wind_direction"].long().view(-1)
+        wind_dir_emb = self.embed_dir(wind_dir)
+
+        # Wind strength - zawsze (B, 1)
         wind_strength = obs["wind_strength"].float()
-        if len(wind_strength.shape) > 1:
-            wind_strength = wind_strength.squeeze(-1)  # (B,)
-        wind_strength = wind_strength.unsqueeze(1)  # (B, 1)
-        # --- Łączenie cech ---
-        # Wszystkie tensory powinny mieć kształt (B, features)
+
+        # Łączenie
         x = torch.cat([cnn_out, wind_strength, wind_dir_emb], dim=1)
-        # --- MLP ---
+
         return self.fc(x)
 
-def checker_env(env, episodes=10):
+def checker_env(env, episodes=5):
     # env_checker.check_env(env)
 
-    for episode in range(episodes - 1):
+    for episode in range(episodes):
         obs, info = env.reset()
         done = False
         total_reward = 0
@@ -154,9 +142,9 @@ def main(path_game):
     env = DSJEnv()
     env.initialize_game(path_game, "DOSBox 0.74-3, Cpu speed:   100000 cycles, Frameskip  0, Program:      DSJ")
 
-    checker_env(env)
+    # checker_env(env)
 
-    # learn_PPO(env, 140000, reset=False)
+    learn_PPO(env, 1000, reset=False)
 
     # model = PPO.load("ppo_4.zip", env)
     # learn_PPO(env, 20000, model, reset=False)
