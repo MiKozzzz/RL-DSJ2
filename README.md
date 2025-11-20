@@ -45,6 +45,7 @@ The goal is to train an autonomous jumper capable of performing full ski jumps (
 
 ## 📦 Files & Structure
 
+```plaintext
 RL-DSJ2/
 ├── 📁 models/                         # All trained models
 │   ├── rl/                           # Reinforcement Learning models
@@ -84,7 +85,7 @@ RL-DSJ2/
 │       └── pozycje w oknie DSJ.txt   # Window position config
 ├── README.md
 └── .gitignore
-
+```
 
 
 ## 📈 Future Improvements
