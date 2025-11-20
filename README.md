@@ -82,11 +82,9 @@ RL-DSJ2/
 │   │   └── wiatr/                    # Wind direction dataset
 │   └── config/
 │       └── pozycje w oknie DSJ.txt   # Window position config
-├── 📁 docs/                          # Documentation
-│   ├── README.md
-│   └── .gitignore
-├── 📁 venv/                          # Python virtual environment
-└── 📁 dosbox/                        # DOSBox emulator files
+├── README.md
+└── .gitignore
+
 
 
 ## 📈 Future Improvements
