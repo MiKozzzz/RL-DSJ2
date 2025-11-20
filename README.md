@@ -45,13 +45,44 @@ The goal is to train an autonomous jumper capable of performing full ski jumps (
 
 ## 📦 Files & Structure
 
-- `pudv4.py` – custom Gym environment
-- `cyfry` – file with photos of digits
-- `wiatr` – file with photos of wind
-- `Model_Ropoznawania_kierunku_wiatru.py` – trains a model to recognize wind from game screenshots
-- `Model_Rozpoznawanie_cyfr.py` – trains a model to recognize digits from game screenshots (used to extract jump length and scores)
-- `best_cyfry.keras` – trained digit recognition model
-- `best_wiatr.keras` – trained wind recognition model
+RL-DSJ2/
+├── 📁 models/                          # Wszystkie modele
+│   ├── rl/                            # Modele RL
+│   ├── vision/                        # Wagi dla modeli wizji komputerowej
+│   │   ├── model_cyfr_weights.pth
+│   │   ├── model_wiatru_weights.pth
+│   │   └── ...
+│   └── training/                      # Checkpointy i logi
+│       ├── checkpoints/
+│       └── tensorboard_logs/
+├── 📁 src/                            # Kod źródłowy
+│   ├── environment/
+│   │   ├── EnvRL.py
+│   │   └── __init__.py
+│   ├── vision/
+│   │   ├── Model_Rozpoznawania_kierunku_wiatru.py
+│   │   ├── Model_Rozpoznawanie_cyfr.py
+│   │   ├── Rozpoznawanie_Liczb.py
+│   │   ├── Rozpoznawanie_Wiatru.py
+│   │   └── __init__.py
+│   ├── utils/
+│   │   ├── Cursor.py
+│   │   └── __init__.py
+│   ├── main.py
+│   └── __init__.py
+├── 📁 data/                           # Dane i assets
+│   ├── images/
+│   │   ├── liczba.png
+│   │   ├── skoczek.png
+│   │   └── wiatr.png
+│   ├── datasets/
+│   │   ├── cyfry/                    # Dataset cyfr
+│   │   └── wiatr/                    # Dataset wiatru
+│   └── config/
+│       └── pozycje w oknie DSJ.txt
+├── README.md
+└── .gitignore
+
 
 ## 📈 Future Improvements
 
