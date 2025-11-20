@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-from Model_Rozpoznawania_kierunku_wiatru import SimpleCNN_Wind
+from .Model_Rozpoznawania_kierunku_wiatru import SimpleCNN_Wind
 import torch
 import time
 
@@ -8,7 +8,7 @@ class RozpoznawanieWiatru:
     def __init__(self):
         self.model = SimpleCNN_Wind()
         # Wagi są w pliku o nazwie: model_cyfr_weights.pth
-        state = torch.load("../../models/vison/model_wiatru_weights.pth", weights_only=True)
+        state = torch.load("../models/vision/model_wiatru_weights.pth", weights_only=True)
         self.model.load_state_dict(state)
         self.model.eval()
 

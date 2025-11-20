@@ -73,7 +73,7 @@ if __name__ == "__main__":
             loss.backward()
             optimizer.step()
 
-    torch.save(model.state_dict(), "../../models/vison/model_cyfr_weights.pth")
+    torch.save(model.state_dict(), "../../models/vision/model_cyfr_weights.pth")
 
 
 

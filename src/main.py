@@ -6,8 +6,6 @@ import torch
 import torch.nn as nn
 from gymnasium import spaces
 
-
-# TODO: To trzeba jeszcze przejrzeć i zrozumieć, bo DeepSeek mi to zrobił kij wie czy dobrze, niby działa
 class DSJFeatureExtractor(BaseFeaturesExtractor):
     def __init__(self, observation_space: spaces.Dict):
         super().__init__(observation_space, features_dim=128)
@@ -60,14 +58,11 @@ class DSJFeatureExtractor(BaseFeaturesExtractor):
 
 def checker_env(env, episodes=5):
     # env_checker.check_env(env)
-
     for episode in range(episodes):
         obs, info = env.reset()
         done = False
-        total_reward = 0
         while not done:
             obs, reward, done, tru, info = env.step(env.action_space.sample())
-            total_reward += reward
 
 
 # TODO: Cuda czy jest czy nie, dodam reset_num_timesteps=False
@@ -99,12 +94,14 @@ def learn_PPO(env, timesteps, model=None, reset=True):
             "MultiInputPolicy",
             env,
             policy_kwargs=policy_kwargs,
-            learning_rate=3e-4,  # Możesz dostosować
-            n_steps=8192,  # Dłuższe rollout
-            batch_size=256,
-            n_epochs=10,
-            clip_range=0.3,
-            ent_coef=0.01,  # Zachęca do eksploracji
+            n_steps=2048,  # 2048 kroków = ~8-12 epizodów (160-250 kroków/epizod)
+            batch_size=128,  # Lepsze: 2048/128 = 16 batchów (więcej aktualizacji)
+            n_epochs=10,  # 10 przejść przez dane
+            learning_rate=3e-4,  # Dobry start
+            clip_range=0.2,  # Standard
+            ent_coef=0.01,  # WIĘCEJ - DSJ2 wymaga eksploracji różnych strategii!
+            gamma=0.995,  # WYŻSZE - w DSJ2 przyszłe punkty są ważne
+            gae_lambda=0.95,  # OK
             verbose=1,
             device="cuda",
         )
@@ -112,22 +109,21 @@ def learn_PPO(env, timesteps, model=None, reset=True):
     model.learn(total_timesteps=timesteps, reset_num_timesteps=reset)
     # now = datetime.now()
     # name = "PPO_" + now.strftime("%Y-%m-%d_%H:%M")
-    name = 'ppo_19_11_2025'
+    name = 'ppo_20_11_2025'
     model.save(name)
 
 
-def load_model_test(env, model):
-    # Uruchom episod
-    obs, _ = env.reset()
-    for _ in range(2000):  # maksymalna liczba kroków
-        action, _states = model.predict(obs, deterministic=True)
-        obs, reward, terminated, truncated, info = env.step(action)
-        if terminated:
-            obs, info = env.reset()
-            break
+def load_model_test(env, model, episodes=5):
+    for episode in range(episodes):
+        obs, info = env.reset()
+        done = False
+        while not done:
+            action, _states = model.predict(obs, deterministic=True)
+            obs, reward, done, tru, info = env.step(action)
 
 
-def main(path_game):
+
+def main(path_game, window_name):
     CUDA = torch.cuda.is_available()
     if CUDA:
         print("GPU z CUDA jest dostępne")
@@ -138,7 +134,7 @@ def main(path_game):
         print("Brak GPU z CUDA, będzie używany CPU")
 
     env = DSJEnv()
-    env.initialize_game(path_game, "DOSBox 0.74-3, Cpu speed:   100000 cycles, Frameskip  0, Program:      DSJ")
+    env.initialize_game(path_game, window_name)
 
     # checker_env(env)
 
@@ -156,5 +152,8 @@ def main(path_game):
 
 
 if __name__ == "__main__":
-    path_game = r"/dosbox/DSJ.bat"
-    main(path_game)
+    with open("path_game", "r", encoding="utf-8") as f:
+        linie = f.readlines()
+    path_game = linie[0].strip()
+    window_name = linie[1]
+    main(path_game, window_name)

@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-from Model_Rozpoznawanie_cyfr import SimpleCNN_Number
+from .Model_Rozpoznawanie_cyfr import SimpleCNN_Number
 import torch
 import time
 
@@ -8,7 +8,7 @@ class RozpoznawanieLiczb:
     def __init__(self):
         self.model = SimpleCNN_Number()
         # Wagi są w pliku o nazwie: model_cyfr_weights.pth
-        state = torch.load("../../models/vison/model_cyfr_weights.pth", weights_only=True)
+        state = torch.load("../models/vision/model_cyfr_weights.pth", weights_only=True)
         self.model.load_state_dict(state)
         self.model.eval()
 

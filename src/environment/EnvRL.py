@@ -174,19 +174,20 @@ class DSJEnv(gym.Env):
         elif action == 2:  # kliknięcie myszką
             self._click_mouse()
         elif action == 3:  # nic nie robienie
-            pass
+            time.sleep(0.01)
 
     def _calculate_step_reward(self, action):
         reward = 0
         if self.state == 0:  # Stan: najazd na progu
             if action == 2:  # kliknięcie myszką
-                reward = 40
+                reward = 50
                 self.state += 1
             elif action == 3:
                 reward = 1
         elif self.state == 1:  # Stan: lot
             if action == 2:  # kliknięcie myszką
-                reward = 80
+                reward = 100
+                self.state += 1
             else:
                 reward = 2
         else:  # Stan: lądowanie
@@ -203,7 +204,6 @@ class DSJEnv(gym.Env):
             jump_len = self.Rozpoznawanie_liczb.rozpoznawanie_cyfr(frame_len)
         else:
             jump_len = 0
-        # TODO: Można pomyśleć czy da się znaleźć jakieś konkretne wartości kar niż takie z czapy
         # Sumowanie nagród
         self.total_reward += reward
         # Zapisz statystyki (BEZ dodawania do total_reward - to zrobi step)
