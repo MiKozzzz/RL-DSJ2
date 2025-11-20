@@ -46,18 +46,20 @@ The goal is to train an autonomous jumper capable of performing full ski jumps (
 ## 📦 Files & Structure
 
 RL-DSJ2/
-├── 📁 models/                          # Wszystkie modele
-│   ├── rl/                            # Modele RL
-│   ├── vision/                        # Wagi dla modeli wizji komputerowej
+├── 📁 models/                         # All trained models
+│   ├── rl/                           # Reinforcement Learning models
+│   │   ├── ppo_1.zip
+│   │   └── ... (other model versions)
+│   ├── vision/                       # Weights for computer Vision models
 │   │   ├── model_cyfr_weights.pth
 │   │   ├── model_wiatru_weights.pth
 │   │   └── ...
-│   └── training/                      # Checkpointy i logi
+│   └── training/                     # Training checkpoints and logs
 │       ├── checkpoints/
 │       └── tensorboard_logs/
-├── 📁 src/                            # Kod źródłowy
+├── 📁 src/                           # Source code
 │   ├── environment/
-│   │   ├── EnvRL.py
+│   │   ├── EnvRL.py                  # DSJ2 Gym environment
 │   │   └── __init__.py
 │   ├── vision/
 │   │   ├── Model_Rozpoznawania_kierunku_wiatru.py
@@ -66,22 +68,25 @@ RL-DSJ2/
 │   │   ├── Rozpoznawanie_Wiatru.py
 │   │   └── __init__.py
 │   ├── utils/
-│   │   ├── Cursor.py
+│   │   ├── Cursor.py                 # Mouse control utilities
 │   │   └── __init__.py
-│   ├── main.py
+│   ├── main.py                       # Main training script
 │   └── __init__.py
-├── 📁 data/                           # Dane i assets
-│   ├── images/
+├── 📁 data/                          # Data and assets
+│   ├── images/                       # Sample images and screenshots
 │   │   ├── liczba.png
 │   │   ├── skoczek.png
 │   │   └── wiatr.png
-│   ├── datasets/
-│   │   ├── cyfry/                    # Dataset cyfr
-│   │   └── wiatr/                    # Dataset wiatru
+│   ├── datasets/                     # Training datasets
+│   │   ├── cyfry/                    # Digit dataset
+│   │   └── wiatr/                    # Wind direction dataset
 │   └── config/
-│       └── pozycje w oknie DSJ.txt
-├── README.md
-└── .gitignore
+│       └── pozycje w oknie DSJ.txt   # Window position config
+├── 📁 docs/                          # Documentation
+│   ├── README.md
+│   └── .gitignore
+├── 📁 venv/                          # Python virtual environment
+└── 📁 dosbox/                        # DOSBox emulator files
 
 
 ## 📈 Future Improvements
