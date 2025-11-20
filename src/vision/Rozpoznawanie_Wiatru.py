@@ -8,7 +8,7 @@ class RozpoznawanieWiatru:
     def __init__(self):
         self.model = SimpleCNN_Wind()
         # Wagi są w pliku o nazwie: model_cyfr_weights.pth
-        state = torch.load("model_wiatru_weights.pth", weights_only=True)
+        state = torch.load("../../models/vison/model_wiatru_weights.pth", weights_only=True)
         self.model.load_state_dict(state)
         self.model.eval()
 
@@ -51,7 +51,7 @@ class RozpoznawanieWiatru:
 
 
 if __name__ == "__main__":
-    name = "wind_direction_observation.png"
+    name = "wiatr.png"
     img = cv2.imread(name, cv2.IMREAD_COLOR)
     start = time.time()
     rozpoznana_kierunek = RozpoznawanieWiatru().rozpoznawanie_wiatru(img)

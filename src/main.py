@@ -1,12 +1,10 @@
 from stable_baselines3 import PPO
-from EnvRL import DSJEnv
+from src.environment.EnvRL import DSJEnv
 import time
-from stable_baselines3.common import env_checker
 from stable_baselines3.common.torch_layers import BaseFeaturesExtractor
 import torch
 import torch.nn as nn
 from gymnasium import spaces
-from datetime import datetime
 
 
 # TODO: To trzeba jeszcze przejrzeć i zrozumieć, bo DeepSeek mi to zrobił kij wie czy dobrze, niby działa
@@ -158,5 +156,5 @@ def main(path_game):
 
 
 if __name__ == "__main__":
-    path_game = r"C:\RL-DSJ2\dosbox\DSJ.bat"
+    path_game = r"/dosbox/DSJ.bat"
     main(path_game)

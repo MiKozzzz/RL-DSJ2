@@ -8,9 +8,9 @@ import pyautogui
 import gymnasium as gym
 import numpy as np
 import cv2
-from Rozpoznawanie_Wiatru import RozpoznawanieWiatru
-from Rozpoznawanie_Liczb import RozpoznawanieLiczb
-from Cursor import Cursor
+from src.vision.Rozpoznawanie_Wiatru import RozpoznawanieWiatru
+from src.vision.Rozpoznawanie_Liczb import RozpoznawanieLiczb
+from src.utils.Cursor import Cursor
 
 class DSJEnv(gym.Env):
     def __init__(self):
@@ -281,7 +281,7 @@ class DSJEnv(gym.Env):
 
 if __name__ == "__main__":
     env = DSJEnv()
-    img = cv2.imread("probka2.png", cv2.IMREAD_COLOR)  # kolor
+    img = cv2.imread("../../data/images/skoczek.png", cv2.IMREAD_COLOR)  # kolor
     start = time.time()
     frame = env.odczyt_zawodnika(img)
     end = time.time()

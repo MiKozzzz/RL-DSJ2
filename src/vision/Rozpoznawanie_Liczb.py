@@ -8,7 +8,7 @@ class RozpoznawanieLiczb:
     def __init__(self):
         self.model = SimpleCNN_Number()
         # Wagi są w pliku o nazwie: model_cyfr_weights.pth
-        state = torch.load("model_cyfr_weights.pth", weights_only=True)
+        state = torch.load("../../models/vison/model_cyfr_weights.pth", weights_only=True)
         self.model.load_state_dict(state)
         self.model.eval()
 
@@ -86,7 +86,7 @@ class RozpoznawanieLiczb:
 
 
 if __name__ == "__main__":
-    name = "probka.png"
+    name = "liczba.png"
     img = cv2.imread(name, cv2.IMREAD_COLOR)
 
     start = time.time()
