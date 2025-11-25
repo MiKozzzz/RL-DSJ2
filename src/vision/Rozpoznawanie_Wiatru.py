@@ -51,7 +51,7 @@ class RozpoznawanieWiatru:
 
 
 if __name__ == "__main__":
-    name = "wiatr.png"
+    name = "../../data/images/wiatr.png"
     img = cv2.imread(name, cv2.IMREAD_COLOR)
     start = time.time()
     rozpoznana_kierunek = RozpoznawanieWiatru().rozpoznawanie_wiatru(img)

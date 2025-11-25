@@ -86,7 +86,7 @@ class RozpoznawanieLiczb:
 
 
 if __name__ == "__main__":
-    name = "liczba.png"
+    name = "../../data/images/liczba.png"
     img = cv2.imread(name, cv2.IMREAD_COLOR)
 
     start = time.time()

@@ -73,10 +73,11 @@ class DSJEnv(gym.Env):
 
 
     def initialize_game(self, path_game, window_game_name):
-        subprocess.Popen([path_game], shell=True)
-        time.sleep(3)
+        subprocess.Popen([path_game])
+        time.sleep(4)
         # Włączenie trybu oknowego
         pyautogui.hotkey('alt', 'enter')
+        time.sleep(1)
         self.hwnd = win32gui.FindWindow(None, window_game_name)
         # Liczenie współrzędnych środka okna DSJ
         rect = win32gui.GetWindowRect(self.hwnd)
@@ -103,7 +104,7 @@ class DSJEnv(gym.Env):
         pyautogui.moveTo(self.center_x, self.center_y)
         # Kursor dla okna DSJ 640x400
         self.Cursor_game.click()
-        time.sleep(8)
+        time.sleep(6)
         self.Cursor_game.move_to(160, 210)
         self.Cursor_game.click()
         self.Cursor_game.move_to(440, 310)
@@ -135,7 +136,7 @@ class DSJEnv(gym.Env):
         if terminated:
             # 3. Logowanie wyników
             self._log_episode_result()
-            time.sleep(1.5)
+            time.sleep(1)
             self.Cursor_game.click()  # Przejście do menu
         return new_observation, reward, terminated, truncated, info
 
@@ -177,21 +178,20 @@ class DSJEnv(gym.Env):
             time.sleep(0.01)
 
     def _calculate_step_reward(self, action):
-        reward = 0
         if self.state == 0:  # Stan: najazd na progu
             if action == 2:  # kliknięcie myszką
-                reward = 50
+                reward = 1
                 self.state += 1
-            elif action == 3:
+            else:
                 reward = 1
         elif self.state == 1:  # Stan: lot
             if action == 2:  # kliknięcie myszką
-                reward = 100
+                reward = 2
                 self.state += 1
             else:
                 reward = 2
         else:  # Stan: lądowanie
-            reward = 2
+            reward = 1
         return reward
 
     def _calculate_final_reward(self):
@@ -204,6 +204,11 @@ class DSJEnv(gym.Env):
             jump_len = self.Rozpoznawanie_liczb.rozpoznawanie_cyfr(frame_len)
         else:
             jump_len = 0
+        # Kara za brak wybicia i ladowania
+        if self.state == 0:
+            reward -= 100
+        elif self.state == 1:
+            reward -= 50
         # Sumowanie nagród
         self.total_reward += reward
         # Zapisz statystyki (BEZ dodawania do total_reward - to zrobi step)
@@ -232,7 +237,7 @@ class DSJEnv(gym.Env):
         obs = {
             "frame": jumper_done,  # (200, 200, 1), dtype=np.uint8
             "wind_direction": np.array([self.wind_direction], dtype=np.int64),
-            "wind_strength": np.array([self.wind_speed / 5], dtype=np.float32)  # Normalizacja siły wiatru
+            "wind_strength": np.array([self.wind_speed], dtype=np.float32)  # Normalizacja siły wiatru
         }
 
         return obs
@@ -244,26 +249,22 @@ class DSJEnv(gym.Env):
         return bool(np.any(gray > 80))
 
     def _move_mouse_up(self):
-        pyautogui.move(0, -3)
+        pyautogui.move(0, -2)
         time.sleep(0.01)
-        return 1
 
     def _move_mouse_down(self):
-        pyautogui.move(0, 3)
+        pyautogui.move(0, 2)
         time.sleep(0.01)
-        return 1
 
     def _click_mouse(self):
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
         win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN, 0, 0)
         # TODO: Znany trick to zrobienie szybkiego ruchu myszką w dół i w góre przy wybiciu można to dodać
         # pyautogui.move(0, 30)
-        time.sleep(0.1)
+        time.sleep(0.15)
         # pyautogui.move(0, -30)
-        # time.sleep(0.15)
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
         win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP, 0, 0)
-        return 1
 
     def grab_frame(self, name):
         return np.array(self.cap.grab(self.dict_windows[name]))
